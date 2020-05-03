@@ -1,4 +1,4 @@
-const descendingOrder = require("./descending-order");
+import { descendingOrder } from "./descending-order";
 
 test("Takes any non-negative integer and returns it with its digits in order", () => {
   expect(descendingOrder(21445)).toBe(54421);
