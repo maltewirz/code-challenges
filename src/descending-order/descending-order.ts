@@ -7,16 +7,14 @@ Input: 145263 Output: 654321
 Input: 1254859723 Output: 9875543221
 */
 
-function descendingOrder(n) {
+export const descendingOrder = (n: number) => {
     return parseInt(
       n
         .toString()
         .split("")
         .sort((a, b) => {
-          return b - a;
+          return parseInt(b) - parseInt(a);
         })
         .join("")
     );
   }
-  
-  module.exports = descendingOrder;
