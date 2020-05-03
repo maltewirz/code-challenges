@@ -4,7 +4,7 @@
 
 ## Purpose
 
-This repository is a collection of completed code challenges, mostly from Codewars. [Profile Badge:](src/codewars/) <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
+This repository is a collection of completed code challenges, mostly from [Codewars:](src/codewars/) <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
 
 ## Built With
 
