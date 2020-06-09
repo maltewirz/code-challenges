@@ -26,8 +26,12 @@ export function foldArray(array: number[], runs: number): number[]  {
 // export function foldArray(array: number[], runs: number): number[] {
 //     const arr2 = [...array]
 //     while (runs > 0) {
-//       arr2.map((val, i, arr) => i + 1 === arr.length ? val : arr[i] = val + arr.pop());
+//       arr2.map((val, i, arr) => {
+//           i + 1 === arr.length 
+//           ? val 
+//           : arr[i] = val + arr.pop()!
+//       });
 //       runs--;
 //     }
 //     return arr2;
-//   }
+// }
