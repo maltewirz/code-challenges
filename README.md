@@ -4,12 +4,12 @@
 
 ## Purpose
 
-This repository is a collection of completed code challenges, mostly from Codewars. <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
+This repository is a collection of completed code challenges from Codewars. <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
 
 ## Built With
 
 - The code challenge solutions use [Typescript](https://www.typescriptlang.org/).
-- The Typescript tests are written with Facebook's [Jest](https://jestjs.io/en/) for unit testing.
+- The Typescript tests are written with [Jest](https://jestjs.io/en/) for unit testing.
 
 ## Getting Started
 
