@@ -1,4 +1,4 @@
-export function sqInRect(l: number, w: number): number[] {
+export function sqInRect(l: number, w: number): number[] | null {
     let result: number[] = [];
     if (l === w) {
         return null;
