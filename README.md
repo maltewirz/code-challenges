@@ -16,5 +16,3 @@ This repository is a collection of completed code challenges from Codewars. <img
 1. Fork or clone this repository to your local machine
 
 2. Run `npm run test <filename>`
-
-4. Modify some of the code in a test file to watch the magic happen
