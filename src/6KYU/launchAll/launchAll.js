@@ -1,12 +1,7 @@
 // https://www.codewars.com/kata/567ed5db4089538eea000010/train/javascript
 
-let count = 0;
 function launchAll(launchMissile) {
-    count++;
-    if (count > 4) {
-        clearInterval(timeout)
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => launchMissile(i), i * 1000);
     }
-    launchMissile(count);
 }
-let timeout = setInterval(launchAll, 1000);
-
