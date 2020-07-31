@@ -6,24 +6,18 @@ export function humanReadable(seconds:number):string {
     let minutesFinal = String(minutes % 60);
     let hoursFinal = String(Math.floor(minutes/60));
 
-
-    if (String(secondsFinal).length === 0) {
-        secondsFinal = '00'
-    } else if (String(secondsFinal).length === 1){
-        secondsFinal = `0${secondsFinal}`;
+    function addZeros(time: string):string {
+        if (time.length === 0) {
+            return '00';
+        } else if (time.length === 1) {
+            return `0${time}`;
+        }
+        return time;
     }
 
-    if (String(minutesFinal).length === 0) {
-        minutesFinal = '00'
-    } else if (String(minutesFinal).length === 1){
-        minutesFinal = `0${minutesFinal}`;
-    }
-
-    if (String(hoursFinal).length === 0) {
-        hoursFinal = '00'
-    } else if (String(hoursFinal).length === 1){
-        hoursFinal = `0${hoursFinal}`;
-    }
+    secondsFinal = addZeros(secondsFinal);
+    minutesFinal = addZeros(minutesFinal);
+    hoursFinal = addZeros(hoursFinal);
     
     return `${hoursFinal}:${minutesFinal}:${secondsFinal}`;
 }
