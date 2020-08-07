@@ -12,6 +12,11 @@ export function parseMolecule(formula: string) {
         const open = /^[({[]/;
         const close = /^[)}\]]/;
         const digit = /^[0-9]+/;
+        let match;
+        if (match = str.match(elem)) {
+            const obj = {};
+            
+        }
     }
     
 }
