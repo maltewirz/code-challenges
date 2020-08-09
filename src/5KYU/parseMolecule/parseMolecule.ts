@@ -5,34 +5,37 @@ const endBracket = [")", "]", "}"];
 export function parseMolecule(formula: string): Record<string, number> {
     const product = (acc: number, cur: number) => acc * cur;
     // grouped array, also groups string together if capital letter is followed by small.
-    const f = formula.match(/[A-Z][a-z]?|\d+|./g) || [];
-    const m: number[] = [];
-    let d = 0;
-    const a: { [key: string]: number} = {};
-    let l = "";
+    const arr = formula.match(/[A-Z][a-z]?|\d+|./g) || [];
+    const multiplierArr: number[] = [];
+    let bracketCounter = 0;
+    const result: { [key: string]: number} = {};
+    let lastChar = "";
 
-    for (let i = f.length - 1; i >= 0; i--) {
-        if (isNaN(Number(f[i])) === false) {
-            m.push(Number(f[i]));
-        } else if (endBracket.indexOf(f[i]) > -1) { // if endbracket is found
-            if (isNaN(Number(l)) === true) {
-                m.push(1);
+    for (let i = arr.length - 1; i >= 0; i--) {       
+         
+        if (isNaN(Number(arr[i])) === false) { // checking if number, pushing to multiplierArr
+            multiplierArr.push(Number(arr[i]));
+        } else if (endBracket.indexOf(arr[i]) > -1) { // if endbracket is found, increase bracketCounter
+            if (isNaN(Number(lastChar)) === true) {   // if lastChar isNaN, push '1' on multiplierArr
+                multiplierArr.push(1);
             }
-            d++;
-        } else if (startBracket.indexOf(f[i]) > -1) {
-            d--;
-            m.pop();
-        } else {
-            a[f[i]] === undefined 
-                ? m.length > 0 
-                    ? a[f[i]] = m.reduce(product) 
-                    : a[f[i]] = 1
-                : a[f[i]] = a[f[i]] + (m.length > 0 ? m.reduce(product) : 1);
-            if (m.length > d) {
-                m.pop();
+            bracketCounter++;
+        } else if (startBracket.indexOf(arr[i]) > -1) { // if startbracket is found
+            bracketCounter--;                   // subtract from bracketCounter and multiplierArr
+            multiplierArr.pop();
+        } else { // if element is found:
+            result[arr[i]] === undefined
+                // if elem not in result array, this takes the product of multiplierArr or 1 for the counter of element  
+                ? multiplierArr.length > 0 
+                    ? result[arr[i]] = multiplierArr.reduce(product) 
+                    : result[arr[i]] = 1
+                // if elem in array, this updates the elem counter
+                : result[arr[i]] = result[arr[i]] + (multiplierArr.length > 0 ? multiplierArr.reduce(product) : 1);
+            if (multiplierArr.length > bracketCounter) {
+                multiplierArr.pop();
             }
         }
-        l = f[i];
+        lastChar = arr[i];
     }
-    return a;
+    return result;
 }
