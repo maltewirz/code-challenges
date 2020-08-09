@@ -1,56 +1,38 @@
-// export class objectClass
-// {
-//   public id: number;
-//   public value: string;
-// }
+// https://www.codewars.com/kata/52f831fa9d332c6591000511
+const startBracket = ["(", "[", "{"];
+const endBracket = [")", "]", "}"];
 
-export function parseMolecule(formula: string) {
-    let result: any[]= [];  // change to object class later
-    while ((formula = parseNextChar(formula)) !== '');
-    function parseNextChar(str: string) {
-        const elem = /^[A-Z]{1}[a-z]?/;
-        const open = /^[({[]/;
-        const close = /^[)}\]]/;
-        const digit = /^[0-9]+/;
-        let match;
-        if (match = str.match(elem)) {
-            const obj = {};
-            
+export function parseMolecule(formula: string): Record<string, number> {
+    const product = (acc: number, cur: number) => acc * cur;
+    // grouped array, also groups string together if capital letter is followed by small.
+    const f = formula.match(/[A-Z][a-z]?|\d+|./g) || [];
+    const m: number[] = [];
+    let d = 0;
+    const a: { [key: string]: number} = {};
+    let l = "";
+
+    for (let i = f.length - 1; i >= 0; i--) {
+        if (isNaN(Number(f[i])) === false) {
+            m.push(Number(f[i]));
+        } else if (endBracket.indexOf(f[i]) > -1) { // if endbracket is found
+            if (isNaN(Number(l)) === true) {
+                m.push(1);
+            }
+            d++;
+        } else if (startBracket.indexOf(f[i]) > -1) {
+            d--;
+            m.pop();
+        } else {
+            a[f[i]] === undefined 
+                ? m.length > 0 
+                    ? a[f[i]] = m.reduce(product) 
+                    : a[f[i]] = 1
+                : a[f[i]] = a[f[i]] + (m.length > 0 ? m.reduce(product) : 1);
+            if (m.length > d) {
+                m.pop();
+            }
         }
+        l = f[i];
     }
-    
+    return a;
 }
-
-// start from innermost bracket (round, square or curl)
-// break apart items by small letters
-// count molecules and put them into object
-// continue with next bracket
-// return
-
-
-
-// let obj = {};
-// text.toLowerCase().split('').forEach(letter => {
-//     obj[letter] ? obj[letter] = ++obj[letter] : obj[letter] = 1;
-// });
-// return Object.values(obj).filter(num => num > 1).length;
-
-// validBraces(braces){
-//     const pairs = {
-//         ')' : '(',
-//         ']' : '[',
-//         '}' : '{'
-//     };
-//     let stack = [];
-//     for (let i = 0; i < braces.length; i++) {
-//         if (braces[i] === '(' || braces[i] === '[' || braces[i] === '{') {
-//             stack.push(braces[i]);
-//         } else if (stack[stack.length-1] === pairs[braces[i]]) {
-//             stack.pop();
-//         } else {
-//             return false;
-//         }
-//     }
-//     return stack.length === 0;
-// }
-
