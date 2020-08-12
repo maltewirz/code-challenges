@@ -13,6 +13,6 @@ This repository is a collection of completed code challenges from Codewars. <img
 
 ## Getting Started
 
-1. Fork or clone this repository to your local machine
+1. Fork or clone this repository to your local machine.
 
-2. Run `npm run test <filename>`
+2. Run `npm run test <filename>`.
