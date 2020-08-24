@@ -50,3 +50,23 @@ export function countUniquevalues(arr: number[]): number {
     }
     return counter;
 }
+
+
+
+// This functions accepts a a variable number of arguments and checks whether there are any
+// duplicates among the arguments passed in. Can be solved via frequency counter or multiple pointer pattern
+
+export function areThereDuplicatesSolution(...arr: any): boolean {
+    arr.sort((a: any,b: any) => a > b);
+    let start = 0;
+    let next = 1;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[start] === arr[next]) {
+            return true;
+        }
+        start++;
+        next++;
+    }
+    return false;
+}
