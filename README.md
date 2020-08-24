@@ -5,6 +5,7 @@
 ## Purpose
 
 This repository is a collection of completed code challenges from Codewars. <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
+The repo also includes popular solving technique like Divide and Conquer, Multiple Pointers and others.
 
 ## Built With
 
