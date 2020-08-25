@@ -3,6 +3,9 @@ import {
     sumZeroOn,
     countUniquevalues,
     areThereDuplicatesSolution,
+    averagePair,
+    isSubsequenceIterative,
+    isSubsequenceRecursive,
 } from './multiplePointers';
 
 test('sumZero Test', () => {
@@ -29,6 +32,24 @@ test('countUniquevalues Test', () => {
 
 test('areThereDuplicatesSolution test', () => {
     expect(areThereDuplicatesSolution(1, 2, 3)).toStrictEqual(false);
-    // expect(areThereDuplicatesSolution(1, 2, 2)).toStrictEqual(true);
-    // expect(areThereDuplicatesSolution('a', 'b', 'c', 'a')).toStrictEqual(true);
+    expect(areThereDuplicatesSolution(1, 2, 2)).toStrictEqual(true);
+    expect(areThereDuplicatesSolution('a', 'b', 'c', 'a')).toStrictEqual(true);
+});
+
+test('averagePair test', () => {
+    expect(averagePair([1, 2, 3], 2.5)).toStrictEqual(true);
+    expect(averagePair([-1, 0, 3, 4, 5, 6], 4.1)).toStrictEqual(false);
+    expect(averagePair([], 4)).toStrictEqual(false);
+});
+
+test('isSubsequenceIterative test', () => {
+    expect(isSubsequenceIterative('hello', 'hello world')).toStrictEqual(true);
+    expect(isSubsequenceIterative('sing', 'sting')).toStrictEqual(true);
+    expect(isSubsequenceIterative('abc', 'acb')).toStrictEqual(false);
+});
+
+test('isSubsequenceRecursive test', () => {
+    expect(isSubsequenceRecursive('hello', 'hello world')).toStrictEqual(true);
+    expect(isSubsequenceRecursive('sing', 'sting')).toStrictEqual(true);
+    expect(isSubsequenceRecursive('abc', 'acb')).toStrictEqual(false);
 });
