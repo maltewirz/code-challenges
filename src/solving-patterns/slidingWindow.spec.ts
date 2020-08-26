@@ -12,10 +12,12 @@ test('maxSubarraySum test', () => {
 
 test('minSubArrayLen test', () => {
     expect(minSubArrayLen([2, 3, 1, 2, 4, 3], 7)).toStrictEqual(2); // 4,3 is smallest subarray
-    // expect(minSubArrayLen([2, 1, 6, 5, 4], 9)).toStrictEqual(2); // 5,4 is smallest subarray
+    expect(minSubArrayLen([2, 1, 6, 5, 4], 9)).toStrictEqual(2); // 5,4 is smallest subarray
 });
 
 test('findLongestSubstring test', () => {
+    expect(findLongestSubstring('test')).toStrictEqual(3);
     expect(findLongestSubstring('rithmschool')).toStrictEqual(7);
-    // expect(findLongestSubstring('bbbbb').toStrictEqual(1);
+    expect(findLongestSubstring('thisishowwedoit')).toStrictEqual(6);
+    expect(findLongestSubstring('bbbbb')).toStrictEqual(1);
 });

@@ -28,8 +28,6 @@ export function maxSubarraySumON(arr: number[], window: number): number | null {
     return maxSum;
 }
 
-// REDO THIS
-
 // minSubArrayLen
 // Accepts two parameters, an array of positive integers and a positve integer.
 // The function should return the minimal length of a contiguous subarray of which
@@ -37,7 +35,6 @@ export function maxSubarraySumON(arr: number[], window: number): number | null {
 // return 0 instead.
 
 export function minSubArrayLen(nums: number[], sum: number): number {
-    //[ 2, 3, 1, 2, 4, 3 ] 7
     let slidingSum = 0;
     let start = 0;
     let end = 0;
@@ -46,8 +43,8 @@ export function minSubArrayLen(nums: number[], sum: number): number {
     while (start < nums.length) {
         // if current window doesn't add up to the given sum,
         // and has not reached end of array
-        // add the current number to the total and move window to the right 
-        if (slidingSum < sum && end < nums.length) {            
+        // add the current number to the total and move window to the right
+        if (slidingSum < sum && end < nums.length) {
             slidingSum += nums[end];
             end++;
         }
@@ -71,17 +68,15 @@ export function minSubArrayLen(nums: number[], sum: number): number {
     return minLen;
 }
 
-// REDO THIS
-
 // findLongestSubstring
-// Accepts a string and returns the length of the longest 
+// Accepts a string and returns the length of the longest
 // substring with all distinct characters.
 
 export function findLongestSubstring(str: string): number {
     let longest = 0;
     type seenObject = {
         [key: string]: number;
-    }
+    };
     const seen: seenObject = {};
     let start = 0;
 
