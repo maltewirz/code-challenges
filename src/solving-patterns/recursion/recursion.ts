@@ -1,9 +1,5 @@
 // Factorial function that takes a number and gives back the multiplied numbers leading up to it.
 
-import { sumMix } from "../../8KYU/sumMix/sumMix";
-import { menFromBoys } from "../../7KYU/menFromBoys/menFromBoys";
-import { findLongestSubstring } from "../slidingWindow/slidingWindow";
-
 export function factorial(num: number): number {
     if (num === 1) {
         return num;
@@ -55,6 +51,7 @@ export function collectOddValuesPureRecursion(arr: number[]): number[] {
 // power
 // Function aceppts a base and an exponent. Return the power of the base to the exponent.
 
+// Manual example:
 // 2^4 = 2*2*2*2
 // 2 * power(2, 3)
 //     2 * power(2, 2)
@@ -69,7 +66,6 @@ export function power(a: number, b: number): number {
     }
     return a * power(a, b - 1);
 }
-
 
 // productOfArray
 // Takes array of numbers and returns the product of them all.
@@ -86,7 +82,7 @@ export function productOfArray(arr: number[]): number {
 
 export function recursiveRange(num: number): number {
     if (num === 1) {
-        return 1
+        return 1;
     }
     return num + recursiveRange(num - 1);
 }
@@ -97,9 +93,90 @@ export function recursiveRange(num: number): number {
 // is equal to the sum of the previous two numbers.
 
 export function fib(num: number): number {
-    
     if (num <= 2) {
         return 1;
     }
-    return fib(num-1) + fib(num-2)
+    return fib(num - 1) + fib(num - 2);
+}
+
+// expect(fib(4)).toStrictEqual(3);
+// manual visualization:
+// 4
+// return          fib(3)       +             fib (2)
+//     return fib (2) + fib(1)             return 1
+//         return 1 + return 1 +           return 1
+// => 1 + 1 + 1 = 3 correct
+
+// expect(fib(5)).toStrictEqual(5);
+// manual visualization:
+// 5
+// return               fib(4)       +                          fib (3)
+//     return fib(3)             + fib(2)                 return fib (2) + fib(1)
+//     return fib (2) + fib(1)    + return 1                 return 1 + return 1
+//     return  1       +  1         + 1                        +1         +1
+// => 1 + 1 + 1 +1 +1 = 5 correct
+
+// reverse
+// Accepts a string and returns a new string in reverse
+
+export function reverse(str: string): string {
+    if (str.length === 1) {
+        return str;
+    }
+    return reverse(str.slice(1)) + str[0];
+}
+
+// Manual example:
+//  input: hel
+//  output: leh
+
+// return reverse('el') + h
+// return reverse('l') + e + h
+// return l + e + h
+
+// isPalindrome
+// Returns true if the string passed to it reads the same forward and backwards.
+
+export function isPalindrome(str: string): boolean {
+    if (str.length === 1) {
+        return true;
+    }
+    if (str.length === 2) {
+        return str[0] === str[str.length - 1];
+    }
+    if (str[0] === str[str.length - 1]) {
+        return isPalindrome(str.slice(1, -1));
+    }
+    return false;
+}
+
+// someRecursive
+// Accepts an array and a callback. Returns true if a single value in the array
+// return true when passed to the callback, otherwise false.
+type cbFunction = (arg: number) => boolean;
+export function someRecursive(arr: number[], cb: cbFunction): boolean {
+    if (arr.length === 0) {
+        return false;
+    }
+    if (cb(arr[0])) {
+        return true;
+    } else {
+        return someRecursive(arr.slice(1), cb);
+    }
+}
+
+// flatten
+// Accepts an array of arrays and returns a new array with all values flattened.
+
+export function flatten(arr: number[][]): number[] {
+    let result: number[] = [];
+    arr.forEach((pos: any) => {
+        if (Number.isInteger(pos)) {
+            result.push(pos);
+            return pos;
+        } else {
+            result = result.concat(flatten(pos));
+        }
+    });
+    return result;
 }

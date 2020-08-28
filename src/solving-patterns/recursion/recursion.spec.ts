@@ -6,6 +6,10 @@ import {
     productOfArray,
     recursiveRange,
     fib,
+    reverse,
+    isPalindrome,
+    someRecursive,
+    flatten,
 } from './recursion';
 
 test('factorial test', () => {
@@ -44,3 +48,28 @@ test('fib test', () => {
     expect(fib(4)).toStrictEqual(3);
     expect(fib(28)).toStrictEqual(317811);
 });
+
+test('reverse test', () => {
+    expect(reverse('hel')).toStrictEqual('leh');
+    expect(reverse('awesome')).toStrictEqual('emosewa');
+    expect(reverse('rithmschool')).toStrictEqual('loohcsmhtir');
+});
+
+test('isPalindrome test', () => {
+    expect(isPalindrome('tacocat')).toStrictEqual(true);
+    expect(isPalindrome('foobar')).toStrictEqual(false);
+});
+
+test('someRecursive test', () => {
+    const isOdd = (val: number) => val % 2 !== 0;
+    expect(someRecursive([1,2,3,4], isOdd)).toStrictEqual(true);
+    expect(someRecursive([4,6,8], isOdd)).toStrictEqual(false);
+});
+
+test('flatten test', () => {
+    expect(flatten([1, 2, 3, [4, 5] ])).toStrictEqual([1, 2, 3, 4, 5]);
+    expect(flatten([2, [4] ])).toStrictEqual([2, 4]);
+    expect(flatten([[1],[2],[3]])).toStrictEqual([1,2,3]);
+});
+
+
