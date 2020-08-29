@@ -180,3 +180,47 @@ export function flatten(arr: number[][]): number[] {
     });
     return result;
 }
+
+// capitalizeFirst  - DIFFERENT WAY
+// Given an array of strings, capitalize the first letter of each string in the array.
+
+export function capitalizeFirst(arr: string[]): string[] {
+    let result: string[] = [];
+    if (arr.length < 1) {
+        return [];
+    }
+    result.push(arr[0][0].toUpperCase() + arr[0].substring(1));
+    result = result.concat(capitalizeFirst(arr.slice(1)));
+    return result;
+}
+
+
+// nestedEvenSum
+// Return the sum of all even numbers in an object which may contain nested objects.
+
+export function nestedEvenSum(obj: any): number {
+    let counter = 0;
+    for (const e in obj) {
+        if (typeof obj[e] === 'number' && obj[e] % 2 === 0) {
+            counter += obj[e]
+        } else if (typeof obj[e] === 'object') {
+            counter += nestedEvenSum(obj[e])
+        } 
+    }
+    return counter;
+}
+
+// capitalizeWords
+// Given an array of words, return a new array containing each word capitalized
+
+export function capitalizeWords(arr: string[]): string[] {
+    let result = [];
+
+    if (arr.length < 1) {
+        return [];
+    }
+
+    result.push(arr[0].toUpperCase());
+    result = result.concat(capitalizeWords(arr.slice(1)));
+    return result;
+}
