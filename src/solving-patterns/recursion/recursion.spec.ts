@@ -13,6 +13,8 @@ import {
     capitalizeFirst,
     nestedEvenSum,
     capitalizeWords,
+    stringifyNumbers,
+    collectStrings,
 } from './recursion';
 
 test('factorial test', () => {
@@ -112,4 +114,51 @@ test('capitalizeWords test', () => {
     expect(
         capitalizeWords(['i', 'am', 'learning', 'recursion'])
     ).toStrictEqual(['I', 'AM', 'LEARNING', 'RECURSION']);
+});
+
+test('flatten test', () => {
+    const obj = {
+        num: 1,
+        test: [],
+        data: {
+            val: 4,
+            info: {
+                isRight: true,
+                random: 66,
+            },
+        },
+    };
+    const resultObj = {
+        num: '1',
+        test: [],
+        data: {
+            val: '4',
+            info: {
+                isRight: true,
+                random: '66',
+            },
+        },
+    };
+
+    expect(stringifyNumbers(obj)).toStrictEqual(resultObj);
+});
+
+test('collectStrings test', () => {
+    const obj = {
+        stuff: 'foo',
+        data: {
+            val: {
+                thing: {
+                    info: 'bar',
+                    moreInfo: {
+                        evenMoreInfo: {
+                            weMadeIt: 'baz',
+                        },
+                    },
+                },
+            },
+        },
+    };
+
+    expect(collectStrings(obj)).toStrictEqual(['foo', 'bar', 'baz']);
 });
