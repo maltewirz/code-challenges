@@ -1,5 +1,7 @@
 // Factorial function that takes a number and gives back the multiplied numbers leading up to it.
 
+import { type } from "os";
+
 export function factorial(num: number): number {
     if (num === 1) {
         return num;
@@ -194,7 +196,6 @@ export function capitalizeFirst(arr: string[]): string[] {
     return result;
 }
 
-
 // nestedEvenSum
 // Return the sum of all even numbers in an object which may contain nested objects.
 
@@ -202,10 +203,10 @@ export function nestedEvenSum(obj: any): number {
     let counter = 0;
     for (const e in obj) {
         if (typeof obj[e] === 'number' && obj[e] % 2 === 0) {
-            counter += obj[e]
+            counter += obj[e];
         } else if (typeof obj[e] === 'object') {
-            counter += nestedEvenSum(obj[e])
-        } 
+            counter += nestedEvenSum(obj[e]);
+        }
     }
     return counter;
 }
@@ -222,5 +223,65 @@ export function capitalizeWords(arr: string[]): string[] {
 
     result.push(arr[0].toUpperCase());
     result = result.concat(capitalizeWords(arr.slice(1)));
+    return result;
+}
+
+// stringifyNumbers  -- REDO
+// Takes an object and finds all off the values which are numbers and converts them to strings.
+type inputObj = {
+    num: number | string;
+    test: any[];
+    data: {
+        val: number | string;
+        info: {
+            isRight: boolean;
+            random: number | string;
+        };
+    };
+};
+export function stringifyNumbers(obj: inputObj): any {
+    const newObj = {};
+
+    for (const key in obj) {
+        if (typeof obj[key] === 'number') {
+            newObj[key] = String(obj[key]);
+        } else if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+            newObj[key] = stringifyNumbers(obj[key]);
+        } else {
+            newObj[key] = obj[key];
+        }
+    }
+    return newObj;
+}
+
+// collectStrings
+// Accepts ans object and returns an array of all values in the object that have a typeof string
+
+type inputObj = {
+    stuff: string;
+    data: {
+        val: {
+            thing: {
+                info: string;
+                moreInfo: {
+                    evenMoreInfo: {
+                        weMadeIt: string;
+                    };
+                };
+            };
+        };
+    };
+}
+
+export function collectStrings(obj: inputObj): string[] {
+    let result: string[] = [];
+
+    for (const key in obj) {
+        if (typeof obj[key] === 'string') {
+            result.push(obj[key]);
+        } else {
+            result = result.concat(collectStrings(obj[key]));
+        }
+    }
     return result;
 }
