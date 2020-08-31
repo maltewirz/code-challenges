@@ -3,6 +3,10 @@
 // every element in the array and check if its the value the want. Examples:
 // * indexOf, includes, find, findIndex
 
+// #### Linear Search Big O
+
+// O(1) Best   	O(n) Average		O(n) Worst
+
 export function linearSearch(arr: string[], val: string): number {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === val) {
@@ -12,9 +16,6 @@ export function linearSearch(arr: string[], val: string): number {
     return -1;
 }
 
-// #### Linear Search Big O
-
-// O(1) Best   	O(n) Average		O(n) Worst
 
 // #### Binary Search
 
@@ -22,6 +23,10 @@ export function linearSearch(arr: string[], val: string): number {
 // * Rather than eliminating one element at a time, you can eliminate
 //      half of the remaining elements at a time.
 // * Example: See Divide and Conque solving pattern
+
+// #### Binary Search Big O
+
+// O(log n) Worst and average  O(1) Best
 
 export function binarySearch(arr: number[], val: number): number {
     let left = 0;
@@ -42,3 +47,7 @@ export function binarySearch(arr: number[], val: number): number {
     return -1;
 }
 
+
+// Native String Search
+// Count the number of times a smaller string appears in a longer string.
+// A straightforward approach involves checking pairs of characters individually.
