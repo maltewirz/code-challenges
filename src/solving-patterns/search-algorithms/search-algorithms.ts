@@ -3,6 +3,8 @@
 // every element in the array and check if its the value the want. Examples:
 // * indexOf, includes, find, findIndex
 
+import { count } from 'console';
+
 // #### Linear Search Big O
 
 // O(1) Best   	O(n) Average		O(n) Worst
@@ -15,7 +17,6 @@ export function linearSearch(arr: string[], val: string): number {
     }
     return -1;
 }
-
 
 // #### Binary Search
 
@@ -37,7 +38,7 @@ export function binarySearch(arr: number[], val: number): number {
             // we add one to avoid redundant code - we already know its not the middle
             left = middle + 1;
         } else {
-            right = middle -1;
+            right = middle - 1;
         }
         middle = Math.floor((right + left) / 2);
     }
@@ -47,7 +48,39 @@ export function binarySearch(arr: number[], val: number): number {
     return -1;
 }
 
-
-// Native String Search
+// Naive String Search
 // Count the number of times a smaller string appears in a longer string.
 // A straightforward approach involves checking pairs of characters individually.
+
+export function naiveStringSearch(str: string, search: string): number {
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        for (let j = 0; j < search.length; j++) {
+            if (str[i] === search[j]) {
+                if (j === search.length - 1) {
+                    count++;
+                }
+                i++;
+            }
+        }
+    }
+    return count;
+}
+
+export function naiveStringSearchRefactor(
+    str: string,
+    search: string
+): number {
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        for (let j = 0; j < search.length; j++) {
+            if (str[i + j] !== search[j]) {
+                break;
+            }
+            if (j === search.length - 1) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
