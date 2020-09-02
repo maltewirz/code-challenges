@@ -21,7 +21,7 @@ export const swapNew = (arr: number[], i: number, j: number): number[] => {
 
 // Bubble Sort - REDO
 // A sorting algorithm where the largest values bubble up to the top!
-// O(n)
+// Complexity O(n)
 
 export function bubbleSort(arr: number[]): number[] {
     for (let i = arr.length; i > 0; i--) {
@@ -43,6 +43,7 @@ export function bubbleSort(arr: number[]): number[] {
 // Selection Sort - REDO
 // Similar to bubble sort, but instead of first placing large values into
 // sorted position, it places small values into sorted position.
+// Complexity O(n2)
 
 export function selectionSort(arr: number[]): number[] {
     for (let i = 0; i < arr.length; i++) {
@@ -55,6 +56,22 @@ export function selectionSort(arr: number[]): number[] {
         if (i !== smallest) {
             [arr[i], arr[smallest]] = [arr[smallest], arr[i]];
         }
+    }
+    return arr;
+}
+
+// Insertion Sort - REDO
+// Builds up the sort by gradually creating a larger left half which is always sorted.
+
+export function insertionSort(arr: number[]): number[] {
+
+    for (let i = 1; i < arr.length; i++) {
+        const currentVal = arr[i];
+        let j;
+        for (j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+            arr[j+1] = arr[j];            
+        }
+        arr[j+1] = currentVal
     }
     return arr;
 }
