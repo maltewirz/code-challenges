@@ -1,4 +1,4 @@
-import { swap, swapNew, bubbleSort, selectionSort } from './sort-algorithms';
+import { swap, swapNew, bubbleSort, selectionSort, insertionSort } from './sort-algorithms';
 
 test('swap test', () => {
     expect(swap([3, 8, 16, 20], 1, 2)).toStrictEqual([3, 16, 8, 20]);
@@ -25,4 +25,9 @@ test('bubbleSort test', () => {
 test('selectionSort test', () => {
     expect(selectionSort([5, 3, 4, 1, 2])).toStrictEqual([1, 2, 3, 4, 5]);
     expect(selectionSort([3,2,1])).toStrictEqual([1, 2, 3]);
+});
+
+test('insertionSort test', () => {
+    expect(insertionSort([5, 3, 4, 1, 2])).toStrictEqual([1, 2, 3, 4, 5]);
+    // expect(insertionSort([3,2,1])).toStrictEqual([1, 2, 3]);
 });
