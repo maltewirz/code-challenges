@@ -83,9 +83,7 @@ export function insertionSort(arr: number[]): number[] {
 // Exploits the fact that arrays of 0 or 1 element are always sorted
 // Works by decomposing an array into smaller arrays of 0 or 1 elements,
 // then building up a newly sorted array.
-
-// This helper function takes two sorted arrays as input and ouputs them sorted.
-// Don't modify the parameters passed to it.
+// Time Complexity O(n log n) Space Complexity O(n)
 
 export function mergeHelper(arr1: number[], arr2: number[]): number[] {
     const results: number[] = [];
