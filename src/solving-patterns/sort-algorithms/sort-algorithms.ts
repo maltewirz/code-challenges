@@ -75,3 +75,77 @@ export function insertionSort(arr: number[]): number[] {
     }
     return arr;
 }
+
+// Faster sorts: Reduce time complexity from O(n) to O(n log n)
+
+// Merge sort
+// Combination of merging and sorting
+// Exploits the fact that arrays of 0 or 1 element are always sorted
+// Works by decomposing an array into smaller arrays of 0 or 1 elements,
+// then building up a newly sorted array.
+
+// This helper function takes two sorted arrays as input and ouputs them sorted.
+// Don't modify the parameters passed to it.
+
+export function mergeHelper(arr1: number[], arr2: number[]): number[] {
+    const results: number[] = [];
+    let i = 0;
+    let j = 0;
+    while (i < arr1.length && j < arr2.length) {
+        if (arr2[j] > arr1[i]) {
+            results.push(arr1[i]);
+            i++;
+        } else {
+            results.push(arr2[j]);
+            j++;
+        }
+    }
+    while (i < arr1.length) {
+        results.push(arr1[i]);
+        i++;
+    }
+    while (j < arr2.length) {
+        results.push(arr2[j]);
+        j++;
+    }
+    return results;
+}
+
+// Alternative with for loops
+// function mergeHelper(arr1: number[], arr2: number[]): number[] {
+//     let result: number[] = [];
+//     let j = 0;
+//     for (let i = 0; i <= arr1.length && j <= arr2.length; i++) {
+
+//         if (i === arr1.length) {
+//             result = result.concat(arr2.slice(j));
+//             break;
+//         }
+
+//         if (j === arr2.length) {
+//             result = result.concat(arr1.slice(i));
+//             break;
+//         }
+
+//         if (arr1[i] <= arr2[j]) {
+//             result.push(arr1[i]);
+//         } else if (arr1[i] > arr2[j]){
+//             result.push(arr2[j]);
+//             i--;
+//             j++;
+//         }
+//     }
+
+//     return result;
+// }
+
+export function mergeSort(arr: number[]): number[] {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+
+    return mergeHelper(left, right)
+}

@@ -1,4 +1,12 @@
-import { swap, swapNew, bubbleSort, selectionSort, insertionSort } from './sort-algorithms';
+import {
+    swap,
+    swapNew,
+    bubbleSort,
+    selectionSort,
+    insertionSort,
+    mergeHelper,
+    mergeSort
+} from './sort-algorithms';
 
 test('swap test', () => {
     expect(swap([3, 8, 16, 20], 1, 2)).toStrictEqual([3, 16, 8, 20]);
@@ -24,12 +32,46 @@ test('bubbleSort test', () => {
 
 test('selectionSort test', () => {
     expect(selectionSort([5, 3, 4, 1, 2])).toStrictEqual([1, 2, 3, 4, 5]);
-    expect(selectionSort([3,2,1])).toStrictEqual([1, 2, 3]);
+    expect(selectionSort([3, 2, 1])).toStrictEqual([1, 2, 3]);
 });
 
 test('insertionSort test', () => {
-    expect(insertionSort([2,1,9,50,4])).toStrictEqual([1,2,4,9,50]);
-    // expect(insertionSort([2,1,2,9,76,0])).toStrictEqual([0,1,2,2,9,76]);
-    // expect(insertionSort([5, 3, 4, 1, 2])).toStrictEqual([1, 2, 3, 4, 5]);
-    // expect(insertionSort([3,2,1])).toStrictEqual([1, 2, 3]);
+    expect(insertionSort([2, 1, 9, 50, 4])).toStrictEqual([1, 2, 4, 9, 50]);
+    expect(insertionSort([2, 1, 2, 9, 76, 0])).toStrictEqual([
+        0,
+        1,
+        2,
+        2,
+        9,
+        76,
+    ]);
+    expect(insertionSort([5, 3, 4, 1, 2])).toStrictEqual([1, 2, 3, 4, 5]);
+    expect(insertionSort([3, 2, 1])).toStrictEqual([1, 2, 3]);
+});
+
+test('mergeHelper test', () => {
+    expect(mergeHelper([1, 10, 50], [2, 14, 99, 100])).toStrictEqual([
+        1,
+        2,
+        10,
+        14,
+        50,
+        99,
+        100,
+    ]);
+    expect(mergeHelper([1, 1, 50], [1, 2, 3, 6])).toStrictEqual([
+        1,
+        1,
+        1,
+        2,
+        3,
+        6,
+        50,
+    ]);
+    expect(mergeHelper([], [1, 2])).toStrictEqual([1, 2]);
+});
+
+
+test('mergeSort test', () => {
+    expect(mergeSort([14,2,7,3])).toStrictEqual([2,3,7,14]);
 });
