@@ -28,6 +28,8 @@ test('selectionSort test', () => {
 });
 
 test('insertionSort test', () => {
-    expect(insertionSort([5, 3, 4, 1, 2])).toStrictEqual([1, 2, 3, 4, 5]);
+    expect(insertionSort([2,1,9,50,4])).toStrictEqual([1,2,4,9,50]);
+    // expect(insertionSort([2,1,2,9,76,0])).toStrictEqual([0,1,2,2,9,76]);
+    // expect(insertionSort([5, 3, 4, 1, 2])).toStrictEqual([1, 2, 3, 4, 5]);
     // expect(insertionSort([3,2,1])).toStrictEqual([1, 2, 3]);
 });
