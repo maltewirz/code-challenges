@@ -5,7 +5,8 @@ import {
     selectionSort,
     insertionSort,
     mergeHelper,
-    mergeSort
+    mergeSort,
+    quickSort,
 } from './sort-algorithms';
 
 test('swap test', () => {
@@ -71,7 +72,21 @@ test('mergeHelper test', () => {
     expect(mergeHelper([], [1, 2])).toStrictEqual([1, 2]);
 });
 
-
 test('mergeSort test', () => {
-    expect(mergeSort([14,2,7,3])).toStrictEqual([2,3,7,14]);
+    expect(mergeSort([14, 2, 7, 3])).toStrictEqual([2, 3, 7, 14]);
+});
+
+test('quickSort test', () => {
+    expect(quickSort([26, 23, 27, 44, 17, 47, 39, 42, 43, 1])).toStrictEqual([
+        1,
+        17,
+        23,
+        26,
+        27,
+        39,
+        42,
+        43,
+        44,
+        47,
+    ]);
 });
