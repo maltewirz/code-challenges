@@ -4,6 +4,8 @@
 // E.g. sorting numbers from smalles to largest
 // Elementary sorting alorithms: Bubble, selection and insertion sort
 
+import { lookup } from 'dns';
+
 // Prerequisite - Swapping values:
 // ES 5
 export function swap(arr: number[], i: number, j: number): number[] {
@@ -118,4 +120,39 @@ export function mergeSort(arr: number[]): number[] {
     const right = mergeSort(arr.slice(mid));
 
     return mergeHelper(left, right);
+}
+
+// Quick sort  -REDO
+// Like merge sort, expploits the fact that arrays of 0 or 1 element are
+// always sorted. Works by selecting one element (called the 'pivot') and finding
+// the index where the pivot should end up in the sorted array.
+// Once the pivot is positioned appropriately, quick sort sort can be applied
+// on either side of the pivot.
+
+// Time Complexity O(n log n) Space Complexity O(log n)
+
+
+export function pivot(arr: number[], start = 0, end = arr.length -1
+): number {
+    const pivot = arr[start];
+    let pivotIndex = start ;
+
+    for (let i = start + 1; i <= end; i++) {
+        if (arr[i] < pivot) {
+            pivotIndex++;
+            [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+        }
+    }
+    
+    [arr[start], arr[pivotIndex]] = [arr[pivotIndex], arr[start]];
+    return pivotIndex;
+}
+
+export function quickSort(arr: number[], left = 0, right = arr.length-1): number[] {
+    if (left < right ){
+        const pivotIndex = pivot(arr, left, right);
+        quickSort(arr,left, pivotIndex-1);
+        quickSort(arr, pivotIndex +1, right)
+    } 
+    return arr;
 }
