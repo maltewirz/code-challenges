@@ -7,6 +7,10 @@ import {
     mergeHelper,
     mergeSort,
     quickSort,
+    getDigitHelper,
+    digitCountHelper,
+    mostDigitsHelper,
+    radixSort
 } from './sort-algorithms';
 
 test('swap test', () => {
@@ -90,3 +94,24 @@ test('quickSort test', () => {
         47,
     ]);
 });
+
+test('getDigitHelper test', () => {
+    expect(getDigitHelper(12345, 1)).toStrictEqual(4);
+    expect(getDigitHelper(7323, 2)).toStrictEqual(3);
+    expect(getDigitHelper(7323, 12)).toStrictEqual(0);
+});
+
+test('digitCountHelper test', () => {
+    expect(digitCountHelper(23)).toStrictEqual(2);
+    expect(digitCountHelper(0)).toStrictEqual(1);
+    expect(digitCountHelper(1234567)).toStrictEqual(7);
+});
+
+test('mostDigitsHelper test', () => {
+    expect(mostDigitsHelper([1234,56,7])).toStrictEqual(4);
+});
+
+test('radixSort test', () => {
+    expect(radixSort([23,345,5467,12,2345,9852])).toStrictEqual([12,23,345,2345,5467,9852]);
+});
+

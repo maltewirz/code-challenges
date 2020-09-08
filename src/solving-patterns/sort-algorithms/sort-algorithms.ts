@@ -122,7 +122,7 @@ export function mergeSort(arr: number[]): number[] {
     return mergeHelper(left, right);
 }
 
-// Quick sort  -REDO
+// Quick sort - REDO
 // Like merge sort, expploits the fact that arrays of 0 or 1 element are
 // always sorted. Works by selecting one element (called the 'pivot') and finding
 // the index where the pivot should end up in the sorted array.
@@ -131,11 +131,9 @@ export function mergeSort(arr: number[]): number[] {
 
 // Time Complexity O(n log n) Space Complexity O(log n)
 
-
-export function pivot(arr: number[], start = 0, end = arr.length -1
-): number {
+export function pivot(arr: number[], start = 0, end = arr.length - 1): number {
     const pivot = arr[start];
-    let pivotIndex = start ;
+    let pivotIndex = start;
 
     for (let i = start + 1; i <= end; i++) {
         if (arr[i] < pivot) {
@@ -143,16 +141,63 @@ export function pivot(arr: number[], start = 0, end = arr.length -1
             [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
         }
     }
-    
+
     [arr[start], arr[pivotIndex]] = [arr[pivotIndex], arr[start]];
     return pivotIndex;
 }
 
-export function quickSort(arr: number[], left = 0, right = arr.length-1): number[] {
-    if (left < right ){
+export function quickSort(
+    arr: number[],
+    left = 0,
+    right = arr.length - 1
+): number[] {
+    if (left < right) {
         const pivotIndex = pivot(arr, left, right);
-        quickSort(arr,left, pivotIndex-1);
-        quickSort(arr, pivotIndex +1, right)
-    } 
+
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
+    }
     return arr;
+}
+
+// Radix Sort
+// Is a special sorting algorithms, that never maks comparisons betweens elements.
+// It exploits the fact that information about the size of a number is encoded in
+// the number of digits. More digits means a bigger number.
+
+// Time Complexity O(nk) Space Complexity O(n + k)
+
+export function getDigitHelper(num: number, place: number): number {
+    const arr = String(num).split('');
+    if (arr.length <= place) {
+        return 0;
+    }
+    return Number(arr[arr.length - 1 - place]);
+    // alternativ:
+    // return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+}
+
+export function digitCountHelper(num: number): number {
+    return String(num).split('').length;
+}
+
+export function mostDigitsHelper(arr: number[]): number {
+    let count = 0;
+    arr.forEach((num) => {
+        count = Math.max(count, String(num).length);
+    });
+    return count;
+}
+
+export function radixSort(nums: number[]): number[] {
+    const maxDigitCount = mostDigitsHelper(nums);
+    for (let k = 0; k < maxDigitCount; k++) {
+        const digitBuckets: number[][] = Array.from({ length: 10 }, () => []);
+        for (let i = 0; i < nums.length; i++) {
+            const digit = getDigitHelper(nums[i], k);
+            digitBuckets[digit].push(nums[i]);
+        }
+        nums = [].concat(...digitBuckets);
+    }
+    return nums;
 }
