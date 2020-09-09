@@ -165,7 +165,8 @@ export function quickSort(
 // It exploits the fact that information about the size of a number is encoded in
 // the number of digits. More digits means a bigger number.
 
-// Time Complexity O(nk) Space Complexity O(n + k)
+// Time Complexity O(nk) Space Complexity O(n + k) 
+// n: length of array; k: number of digits
 
 export function getDigitHelper(num: number, place: number): number {
     const arr = String(num).split('');
