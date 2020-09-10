@@ -12,11 +12,23 @@
 // * Connected via nodes with a next pointer
 // * Random access is not allowed
 
-// Arrays: Take the elevator to the position
+// #### Arrays: Take the elevator to the position
 
 // * Indexed in order!
 // * Insertion and deletion can be expensive
 // * Can quickyl be accessed at a specific index
+
+// #### Big O Notation
+// * Insertion O(1)
+// * Removal O(1) or O (n)
+// * Searching O(n)
+// * Access O(n)
+
+// ### Summary
+
+// * Singly Linked Lists are an excellent alternative to arrays when optimizing for insertion and deletion at the beginning are often required.
+// * Arrays contain a built in index whereas Linked Lists do not
+// * The idea of a list data structure that consists of nodes is a the foundation for other data structures like stacks and queues.
 
 export class Node {
     val: number;
