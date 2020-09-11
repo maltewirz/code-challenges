@@ -49,4 +49,29 @@ describe('DoublyLinkedList', () => {
         list.push(2)
         expect(list.get(0).val).toStrictEqual(1);
     })
+
+    test('node can be set on the list', () => {
+        const list = new DoublyLinkedList();
+        list.push(1)
+        list.push(2)
+        expect(list.set(0,5)).toStrictEqual(true)
+        expect(list.get(0).val).toStrictEqual(5);
+    })
+
+    test('value can be inserted at a specific index on the list', () => {
+        const list = new DoublyLinkedList();
+        list.push(1)
+        list.push(2)
+        expect(list.set(1,5)).toStrictEqual(true)
+        expect(list.get(1).val).toStrictEqual(5);
+    })
+
+    test('value can be inserted at a specific index on the list', () => {
+        const list = new DoublyLinkedList();
+        list.push(1)
+        list.push(2)
+        list.push(3)
+        list.remove(1)
+        expect(list.get(1).val).toStrictEqual(3);
+    })
 })
