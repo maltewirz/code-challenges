@@ -59,3 +59,7 @@ Can have 0, 1 or 2 children - not more.
 11     29       50        91
 ```
 
+
+ #### Big O Notation
+ * Insertion O(log n) 
+ * Searching O(log n)  
