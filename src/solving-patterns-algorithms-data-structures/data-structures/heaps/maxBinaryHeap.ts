@@ -89,7 +89,7 @@ export class MaxBinaryHeap {
             if (rightChildIdx < length) {
                 rightChild = this.values[rightChildIdx];
                 if (
-                    (rightChild > element && swap === null) ||
+                    (rightChild > element && swap === null) || leftChild &&
                     (swap !== null && rightChild > leftChild)
                 ) {
                     swap = rightChildIdx;

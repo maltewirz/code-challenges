@@ -1,4 +1,4 @@
-import { MaxBinaryHeap } from './heaps';
+import { MaxBinaryHeap } from './maxBinaryHeap';
 
 describe('MaxBinaryHeap', () => {
     test('MaxBinaryHeap Class can be instantiated', () => {
