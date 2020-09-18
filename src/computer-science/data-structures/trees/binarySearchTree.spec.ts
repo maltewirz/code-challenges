@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Node, BinarySearchTree } from './binarySearchTree';
 
 describe('BinarySearchTree', () => {
