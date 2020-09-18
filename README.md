@@ -6,27 +6,10 @@
 
 Overview:
 
-1. [Code Challenges] (src/code-challenges/) from Codewars. 
-[Least Recently Used](src/code-challenges/)
-<img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
-2. **Algorithms** for searching and sorting.
-3. **Data Structures** like Singly Linked List, Doubly Linked List, Heaps and Trees.
-4. **Solving patterns** like Divide and Conquer, Multiple Pointers and Frequency Counter.
-
-
-- [Cache](cache)
-[testing]
-  - [Least Recently Used](cache/least_recently_used)
-  - [Ring Buffer](cache/ring_buffer)
-- [Graph](graph) 🚧 Under Construction 🚧
-- [Linked List](linked_list)
-  - [Singly-Linked List](linked_list/singly_linked_list)
-  - [Doubly-Linked List](linked_list/doubly_linked_list)
-- [Queue](queue)
-- [Stack](stack)
-- [Tree](tree)
-  - [Binary Search Tree](tree/binary_search_tree)
-
+1. [Code Challenges](src/code-challenges/) from Codewars. <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
+2. [Algorithms](src/computer-science/algorithms/) for searching and sorting.
+3. [Data Structures](src/computer-science/data-structures/) like Singly Linked List, Doubly Linked List, Heaps and Trees.
+4. [Solving patterns](src/computer-science/solving-patterns/) like Divide and Conquer, Multiple Pointers and Frequency Counter.
 
 ## Built With
 
