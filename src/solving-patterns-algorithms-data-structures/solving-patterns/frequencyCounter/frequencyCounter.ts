@@ -2,8 +2,6 @@
 // The function same accepts two arrays and should return true if every value in the array has its corresponding
 // value squared in the second array. The frequency of values must be the same.
 
-import { feast } from '../8KYU/feast/feast';
-
 export function sameOn2(arrA: number[], arrB: number[]): boolean {
     // complexity O(n^2). If arr 1000 lines, this runs 1 Mio. times.
     arrA = arrA.sort();

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Node, DoublyLinkedList } from './doublyLinkedList';
 
 
