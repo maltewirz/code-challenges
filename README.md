@@ -4,8 +4,6 @@
 
 ## Purpose
 
-Overview:
-
 1. [Code Challenges](src/code-challenges/) from Codewars. <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
 2. [Algorithms](src/computer-science/algorithms/) for searching and sorting.
 3. [Data Structures](src/computer-science/data-structures/) like Singly Linked List, Doubly Linked List, Heaps and Trees.
