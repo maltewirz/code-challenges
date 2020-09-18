@@ -6,7 +6,7 @@
 
 Overview:
 
-1. [Code challenges] (src/code-challenges) from Codewars. <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
+1. [Code challenges] (src/code-challenges/) from Codewars. <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
 2. **Algorithms** for searching and sorting.
 3. **Data Structures** like Singly Linked List, Doubly Linked List, Heaps and Trees.
 4. **Solving patterns** like Divide and Conquer, Multiple Pointers and Frequency Counter.
