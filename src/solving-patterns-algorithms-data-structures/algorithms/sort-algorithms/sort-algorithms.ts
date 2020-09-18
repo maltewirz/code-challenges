@@ -4,8 +4,6 @@
 // E.g. sorting numbers from smalles to largest
 // Elementary sorting alorithms: Bubble, selection and insertion sort
 
-import { lookup } from 'dns';
-
 // Prerequisite - Swapping values:
 // ES 5
 export function swap(arr: number[], i: number, j: number): number[] {
@@ -198,7 +196,7 @@ export function radixSort(nums: number[]): number[] {
             const digit = getDigitHelper(nums[i], k);
             digitBuckets[digit].push(nums[i]);
         }
-        nums = [].concat(...digitBuckets);
+        nums = [].concat(...digitBuckets as []);
     }
     return nums;
 }

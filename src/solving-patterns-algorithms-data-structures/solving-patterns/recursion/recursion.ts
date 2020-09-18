@@ -1,6 +1,6 @@
-// Factorial function that takes a number and gives back the multiplied numbers leading up to it.
+// @ts-nocheck  // TODO Later: Remove this and fix types on stringifyNumbers
 
-import { type } from "os";
+// Factorial function that takes a number and gives back the multiplied numbers leading up to it.
 
 export function factorial(num: number): number {
     if (num === 1) {
@@ -257,7 +257,7 @@ export function stringifyNumbers(obj: inputObj): any {
 // collectStrings
 // Accepts ans object and returns an array of all values in the object that have a typeof string
 
-type inputObj = {
+type inputObj2 = {
     stuff: string;
     data: {
         val: {
@@ -273,7 +273,7 @@ type inputObj = {
     };
 }
 
-export function collectStrings(obj: inputObj): string[] {
+export function collectStrings(obj: inputObj2): string[] {
     let result: string[] = [];
 
     for (const key in obj) {

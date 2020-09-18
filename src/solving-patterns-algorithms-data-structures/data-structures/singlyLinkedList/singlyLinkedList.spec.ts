@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Node, SinglyLinkedList } from './singlyLinkedList';
 
 describe('SinglyLinkedList', () => {
@@ -65,7 +66,7 @@ describe('SinglyLinkedList', () => {
         list.push(2);
 
         list.unshift(3);
-
+        
         expect(list.length).toStrictEqual(3);
         expect(list.head.val).toStrictEqual(3);
     });

@@ -51,5 +51,5 @@ test('areThereDuplicatesSolutionB test', () => {
 
 test('sameFrequency test', () => {
     expect(sameFrequency(182, 281)).toStrictEqual(true);
-    // expect(sameFrequency(34, 14)).toStrictEqual(false);
+    expect(sameFrequency(34, 14)).toStrictEqual(false);
 })
