@@ -11,6 +11,12 @@
 
 // ## MinBinaryHeap: Parent nodes are always smaller than child nodes
 
+
+// BIG O Notation
+// Insertion + Removal: O(log n)
+// Removal: O(log n)
+// Searching: O(n)
+
 // Example:
 //          41
 //     39         33
@@ -61,7 +67,7 @@ export class MaxBinaryHeap {
     extractMax(): number {
         const max = this.values[0];
         const end = this.values.pop();
-        if (this.values.length > 0) {
+        if (this.values.length > 0 && end) {
             this.values[0] = end;
             this.sinkDown();
         }
