@@ -1,10 +1,10 @@
 // Hash Table
 // Used to store key-value pairs. Like arrays, but the keys are not ordered.
-// Unlike arrays, hash tables are fast for all of the following operations: 
+// Unlike arrays, hash tables are fast for all of the following operations:
 // Finding values, adding new values and removing values.
 
 // Nearly every programming language has some sort of hash table data structure.
-// Because of their speed, hash tables are very commonly used. 
+// Because of their speed, hash tables are very commonly used.
 // Python has Dictionaries
 // JS has Objects and Maps - Objects have some restrictions. but are basically hash tables.
 // Java, Go, Scala have Maps
@@ -19,7 +19,19 @@
 // In order to look up values by key, we need a way to convert keys into valid array indices.
 // A function that performs this task is called a hash function.
 
-// Good Hash: 
+// Good Hash:
 // 1. Fast - constant time
 // 2. Doesn't cluster outputs at specific indices, but distributes uniformly
 // 3. Deterministic - Same input yields same output
+
+// Hash for string only
+
+export function hash(key: string, arrayLen: number): number {
+    let total = 0;
+    for (const char of key) {
+        // map "a" to 1, "b" to 2, "c" to 3, etc
+        const value = char.charCodeAt(0) - 96;
+        total = (total + value) % arrayLen;
+    }
+    return total;
+}
