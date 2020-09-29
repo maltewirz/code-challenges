@@ -130,6 +130,7 @@ export class Graph {
     //   F: [ 'D', 'E' ] } }
 
     depthFirstRecursive(start: string): string[] {
+        // REDO
         const result: string[] = [];
         const visited: Record<string, boolean> = {};
         const adjacencyList = this.adjacencyList;
@@ -151,5 +152,47 @@ export class Graph {
         return result;
     }
 
-    
+    depthFirstIterative(start: string): string[] {
+        const stack = [start];
+        const result: string[] = [];
+        const visited: Record<string, boolean> = {};
+        let currentVertex;
+        visited[start] = true;
+
+        while (stack.length) {
+            currentVertex = stack.pop();
+            if (currentVertex) {
+                result.push(currentVertex);
+                this.adjacencyList[currentVertex].forEach((neighbor) => {
+                    if (!visited[neighbor]) {
+                        visited[neighbor] = true;
+                        stack.push(neighbor);
+                    }
+                });
+            }
+        }
+        return result;
+    }
+
+    breadthFirstIterative(start: string): string[] {
+        const stack = [start];
+        const result: string[] = [];
+        const visited: Record<string, boolean> = {};
+        let currentVertex;
+        visited[start] = true;
+
+        while (stack.length) {
+            currentVertex = stack.shift();
+            if (currentVertex) {
+                result.push(currentVertex);
+                this.adjacencyList[currentVertex].forEach((neighbor) => {
+                    if (!visited[neighbor]) {
+                        visited[neighbor] = true;
+                        stack.push(neighbor);
+                    }
+                });
+            }
+        }
+        return result;
+    }
 }
