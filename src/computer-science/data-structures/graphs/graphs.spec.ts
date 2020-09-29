@@ -53,7 +53,7 @@ describe('Graphs', () => {
         expect(graph.adjacencyList['Dallas']).toStrictEqual(undefined);
     });
 
-    test('depth first search (dfs) traversal', () => {
+    test('depth first search (dfs) recursive traversal', () => {
         const graph = new Graph();
         graph.addVertex('A');
         graph.addVertex('B');
@@ -76,6 +76,59 @@ describe('Graphs', () => {
             'D',
             'E',
             'C',
+            'F',
+        ]);
+    });
+
+    test('depth first search (dfs) iterative traversal', () => {
+        const graph = new Graph();
+        graph.addVertex('A');
+        graph.addVertex('B');
+        graph.addVertex('C');
+        graph.addVertex('D');
+        graph.addVertex('E');
+        graph.addVertex('F');
+
+        graph.addEdge('A', 'B');
+        graph.addEdge('A', 'C');
+        graph.addEdge('B', 'D');
+        graph.addEdge('C', 'E');
+        graph.addEdge('D', 'E');
+        graph.addEdge('D', 'F');
+        graph.addEdge('E', 'F');
+        expect(graph.depthFirstIterative('A')).toStrictEqual([
+            'A',
+            'C',
+            'E',
+            'F',
+            'D',
+            'B',
+        ]);
+    });
+
+    test('breadth first search (bfs) iterative traversal', () => {
+        const graph = new Graph();
+        graph.addVertex('A');
+        graph.addVertex('B');
+        graph.addVertex('C');
+        graph.addVertex('D');
+        graph.addVertex('E');
+        graph.addVertex('F');
+
+        graph.addEdge('A', 'B');
+        graph.addEdge('A', 'C');
+        graph.addEdge('B', 'D');
+        graph.addEdge('C', 'E');
+        graph.addEdge('D', 'E');
+        graph.addEdge('D', 'F');
+        graph.addEdge('E', 'F');
+
+        expect(graph.breadthFirstIterative('A')).toStrictEqual([
+            'A',
+            'B',
+            'C',
+            'D',
+            'E',
             'F',
         ]);
     });
