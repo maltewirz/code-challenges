@@ -1,6 +1,8 @@
 // A graph data structure consists of a finite (and possibly mutable)
-// set of unordered pairs of these vertices for an undirected graph or 
+// set of unordered pairs of these vertices for an undirected graph or
 // a set of ordered pairs for a directed graph.
+
+import { recursiveRange } from '../../solving-patterns/recursion/recursion';
 
 // Graph: Nodes + Connections
 
@@ -36,11 +38,11 @@
 // 0 - 1 - 2 - 3 - 4 - 5
 // [
 // 0  [1,5],
-// 1  [0,2], 
+// 1  [0,2],
 // 2  [1,3],
 // 3  [2,4],
 // 4  [3,5],
-// 5  [4,0]   
+// 5  [4,0]
 // ]
 
 // Adjacency List vs Matrix
@@ -53,7 +55,7 @@
 // Query            O(V+E)          O(1)
 // Storage          O(V+E)          O(V^2)
 
-// List: 
+// List:
 // + Can take up less space in sparse graphs
 // + Faster to iterate over all edges
 // - Can be slower to lookup specific edge
@@ -73,7 +75,7 @@ type graphType = {
 export class Graph {
     adjacencyList: graphType = {};
     constructor() {
-        this.adjacencyList = {}
+        this.adjacencyList = {};
     }
 
     addVertex(vertex: string): void {
@@ -89,10 +91,10 @@ export class Graph {
 
     removeEdge(vertex1: string, vertex2: string): void {
         this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
-            v => v !== vertex2
+            (v) => v !== vertex2
         );
         this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
-            v => v !== vertex1
+            (v) => v !== vertex1
         );
     }
 
@@ -106,4 +108,48 @@ export class Graph {
         delete this.adjacencyList[vertex];
     }
 
+    // Graph Traversal
+    // Examples: Peer to peer networking, web crawlers,
+    // finding closes recommendations, shortest path problems: GPS Navigation,
+    // Solving mazes, AI (shortest path wit win the game)
+
+    //          A
+    //        /   \
+    //     B         C
+    //     |         |
+    //     D    -    E
+    //      \       /
+    //          F
+
+    // adjacencyList:
+    // { A: [ 'B', 'C' ],
+    //   B: [ 'A', 'D' ],
+    //   C: [ 'A', 'E' ],
+    //   D: [ 'B', 'E', 'F' ],
+    //   E: [ 'C', 'D', 'F' ],
+    //   F: [ 'D', 'E' ] } }
+
+    depthFirstRecursive(start: string): string[] {
+        const result: string[] = [];
+        const visited: Record<string, boolean> = {};
+        const adjacencyList = this.adjacencyList;
+
+        function recursiveTrav(vertex: string) {
+            if (!vertex) {
+                return null;
+            }
+            visited[vertex] = true;
+            result.push(vertex);
+            adjacencyList[vertex].forEach((neighbor) => {
+                if (!visited[neighbor]) {
+                    return recursiveTrav(neighbor);
+                }
+            });
+        }
+        recursiveTrav(start);
+
+        return result;
+    }
+
+    
 }
