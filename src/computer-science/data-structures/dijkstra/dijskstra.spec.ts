@@ -62,8 +62,8 @@ describe('PriorityQueue', () => {
 });
 
 
-describe('Dijkstra', () => {
-    test('setup Weighted Graph', () => {
+describe('Dijkstra Algorithm', () => {
+    test('Weighted Graph', () => {
         const graph = new WeightedGraph();
         graph.addVertex('A');
         graph.addVertex('B');
@@ -81,7 +81,7 @@ describe('Dijkstra', () => {
         graph.addEdge('D', 'F', 1);
         graph.addEdge('E', 'F', 1);
 
-        console.log(graph.Dijkstra('A', 'E'));
+        expect(graph.Dijkstra('A', 'E')).toStrictEqual( [ 'A', 'C', 'D', 'F', 'E' ]);
     })
 })
 

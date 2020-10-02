@@ -16,6 +16,12 @@
 // previous total, we store the new shorter distance
 // for that node.
 
+//      A  -4- B -3-     E
+//      |2           /3   /
+//      C    -2-    D    /1
+//        \4      /1    /
+//            F
+
 type QueueValue = { val: string; priority: number };
 type QueueValues = QueueValue[];
 type GraphType = {
@@ -59,7 +65,7 @@ export class WeightedGraph {
         this.adjacencyList[vertex2].push({ node: vertex1, weight });
     }
 
-    Dijkstra(start: string, finish: string): string[] {
+    Dijkstra(start: string, finish: string): (string | number)[] | undefined {
         const nodes = new PriorityQueue();
         const distances: { [key: string]: number } = {};
         const previous: { [key: string]: number | null | string } = {};
@@ -77,7 +83,6 @@ export class WeightedGraph {
             previous[vertex] = null;
         }
         // as long as there is something to visit
-
         while (nodes.values.length) {
             const dequeuedNode = nodes.dequeue();
             if (dequeuedNode) {
@@ -85,11 +90,11 @@ export class WeightedGraph {
             }
             if (smallest === finish) {
                 // We are done, build up path to return at end
-
-                while(smallest !== null && previous[smallest]) {
-                    path.push(smallest)
-                    smallest = previous[smallest]
+                while (smallest !== null && previous[smallest]) {
+                    path.push(smallest);
+                    smallest = previous[smallest];
                 }
+                break;
             }
             if (smallest || (smallest && distances[smallest] !== Infinity)) {
                 for (const neighbor in this.adjacencyList[smallest]) {
@@ -108,7 +113,10 @@ export class WeightedGraph {
                     }
                 }
             }
-        }        
-        return path.concat(smallest).reverse();
+        }
+        if (smallest) {
+            path.push(smallest);
+            return path.reverse();
+        }
     }
 }
