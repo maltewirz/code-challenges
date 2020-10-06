@@ -14,8 +14,20 @@
 - All code is written using [Typescript](https://www.typescriptlang.org/).
 - The Typescript tests are written with [Jest](https://jestjs.io/en/) for unit testing.
 
-## Getting Started
+## Getting Started 
 
 1. Fork or clone this repository to your local machine.
 
-2. Run `npm run test <filename>` for a specific test, or `npm run test` to run all tests.
+### For Typescript Challenges
+
+2. Install using `npm i` command in your terminal.
+
+3. Run `npm run test <filename>` for a specific test, or `npm run test` to run all tests.
+
+### For Python Challenges
+
+2. Install using `pipenv install` command in your terminal.
+
+3. Start a shell environment by running pipenv shell
+
+4. Navigate into any directory and run files using the `python <filename>` command-
