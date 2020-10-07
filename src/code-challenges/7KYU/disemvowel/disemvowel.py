@@ -18,3 +18,11 @@ def disemvowel(string):
         if l != 'a' and l != 'e' and l != 'i' and l != 'o' and l != 'u':
             result += e
     return result 
+
+
+# Alternative Solution
+
+# def disemvowel(s):
+#     for i in "aeiouAEIOU":
+#         s = s.replace(i,'')
+#     return s
