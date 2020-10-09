@@ -30,4 +30,6 @@
 
 3. Start a shell environment by running pipenv shell
 
-4. Navigate into any directory and run files using the `python <filename>` command-
+4. Navigate into any directory and run files using the `python <filename>` command. 
+
+4.1 Alternative for automatically rerun tests: `nodemon --ext py --exec "python src/code-challenges/xx/test_xx.py"`
