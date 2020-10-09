@@ -1,6 +1,7 @@
 from vowelCount import vowelCount
 import unittest
 
+
 class TestVowelCount(unittest.TestCase):
     def testRuns(self):
         """
@@ -9,5 +10,6 @@ class TestVowelCount(unittest.TestCase):
         result = vowelCount("abracadabra")
         self.assertEqual(result, 5)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
