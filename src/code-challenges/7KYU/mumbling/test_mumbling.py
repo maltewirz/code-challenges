@@ -14,8 +14,8 @@ class Test(unittest.TestCase):
         """
         Tests that mumbling
         """
-        result = mumbling("ZpglnRxqenU")
-        self.assertEqual(result, "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu")
+        result = mumbling("ZpglnRxq")
+        self.assertEqual(result, "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq")
 
 
 if __name__ == "__main__":
