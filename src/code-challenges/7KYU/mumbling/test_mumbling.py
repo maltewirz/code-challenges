@@ -1,6 +1,7 @@
 from mumbling import mumbling
 import unittest
 
+
 class Test(unittest.TestCase):
     def testRuns(self):
         """
@@ -9,12 +10,13 @@ class Test(unittest.TestCase):
         result = mumbling("abcd")
         self.assertEqual(result, "A-Bb-Ccc-Dddd")
 
-    def testRuns(self):
+    def testRuns2(self):
         """
         Tests that mumbling
         """
         result = mumbling("ZpglnRxqenU")
         self.assertEqual(result, "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu")
+
 
 if __name__ == "__main__":
     unittest.main()
