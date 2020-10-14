@@ -33,7 +33,7 @@ test('countUniquevalues Test', () => {
 test('areThereDuplicatesSolution test', () => {
     expect(areThereDuplicatesSolution(1, 2, 3)).toStrictEqual(false);
     expect(areThereDuplicatesSolution(1, 2, 2)).toStrictEqual(true);
-    expect(areThereDuplicatesSolution('a', 'b', 'c', 'a')).toStrictEqual(true);
+    expect(areThereDuplicatesSolution('a','a', 'b', 'c', )).toStrictEqual(true);
 });
 
 test('averagePair test', () => {

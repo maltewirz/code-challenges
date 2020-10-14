@@ -6,7 +6,7 @@ class Test(unittest.TestCase):
     def test_find_square1(self):
         result = is_square(0)
         self.assertEqual(result, True)
-    
+
     def test_find_square2(self):
         result = is_square(4)
         self.assertEqual(result, True)
