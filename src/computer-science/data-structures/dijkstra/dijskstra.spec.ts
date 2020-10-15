@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { WeightedGraph, PriorityQueue } from './dijkstra';
 
 describe('WeightedGraph', () => {
