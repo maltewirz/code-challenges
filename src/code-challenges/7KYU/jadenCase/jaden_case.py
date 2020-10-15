@@ -6,7 +6,12 @@
 
 def jaden_case(string):
     result = []
-    arr = string.split(' ')
+    arr = string.split(" ")
     for e in arr:
         result.append(e[0].upper() + e[1:])
-    return ' '.join(result)
+    return " ".join(result)
+
+
+# Alternative
+# def toJadenCase(string):
+#     return " ".join(w.capitalize() for w in string.split())
