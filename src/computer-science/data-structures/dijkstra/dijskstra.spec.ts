@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { WeightedGraph, PriorityQueue } from './dijkstra';
 
 describe('WeightedGraph', () => {
@@ -45,10 +44,12 @@ describe('PriorityQueue', () => {
         queue.enqueue('A', 1);
         queue.enqueue('B', 14);
         queue.enqueue('C', 5);
-        let dequeued = queue.dequeue().val;
-        expect(dequeued).toStrictEqual('A');
-        dequeued = queue.dequeue().val;
-        expect(dequeued).toStrictEqual('C');
+        let dequeued = queue.dequeue();
+        let dequeuedVal = dequeued.val
+        expect(dequeuedVal).toStrictEqual('A');
+        dequeued = queue.dequeue();
+        dequeuedVal = dequeued.val
+        expect(dequeuedVal).toStrictEqual('C');
     });
 
     test('a queue can be sorted', () => {
