@@ -30,7 +30,7 @@ def printer_error(s):
     for char in s:
         if char not in goodLetters:
             counter += 1
-    return ("%i/%i" % (counter, len(s)))
+    return "%i/%i" % (counter, len(s))
 
 
 # Alternative with Regex:
