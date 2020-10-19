@@ -10,5 +10,7 @@ class Test(unittest.TestCase):
     def test_2(self):
         result = printer_error("aaabbbbhaijjjm")
         self.assertEqual(result, "0/14")
+
+
 if __name__ == "__main__":
     unittest.main()
