@@ -1,3 +1,5 @@
+# https://www.codewars.com/kata/5264d2b162488dc400000001/discuss/python
+
 def spin_words(sentence):
     wordList = sentence.split()
     result = []
@@ -10,6 +12,4 @@ def spin_words(sentence):
 
 
 # Alternative:
-# def spin_words(sentence):
-#     # Your code goes here
-#     return " ".join([x[::-1] if len(x) >= 5 else x for x in sentence.split(" ")])
+# return " ".join([x[::-1] if len(x) >= 5 else x for x in sentence.split(" ")])
