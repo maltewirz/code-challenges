@@ -45,10 +45,10 @@ describe('PriorityQueue', () => {
         queue.enqueue('B', 14);
         queue.enqueue('C', 5);
         let dequeued = queue.dequeue();
-        let dequeuedVal = dequeued.val
+        let dequeuedVal = dequeued.val;
         expect(dequeuedVal).toStrictEqual('A');
         dequeued = queue.dequeue();
-        dequeuedVal = dequeued.val
+        dequeuedVal = dequeued.val;
         expect(dequeuedVal).toStrictEqual('C');
     });
 
@@ -63,7 +63,6 @@ describe('PriorityQueue', () => {
     });
 });
 
-
 describe('Dijkstra Algorithm', () => {
     test('Weighted Graph', () => {
         const graph = new WeightedGraph();
@@ -73,7 +72,7 @@ describe('Dijkstra Algorithm', () => {
         graph.addVertex('D');
         graph.addVertex('E');
         graph.addVertex('F');
-        
+
         graph.addEdge('A', 'B', 4);
         graph.addEdge('A', 'C', 2);
         graph.addEdge('B', 'E', 3);
@@ -83,8 +82,12 @@ describe('Dijkstra Algorithm', () => {
         graph.addEdge('D', 'F', 1);
         graph.addEdge('E', 'F', 1);
 
-        expect(graph.Dijkstra('A', 'E')).toStrictEqual( [ 'A', 'C', 'D', 'F', 'E' ]);
-    })
-})
-
-
+        expect(graph.Dijkstra('A', 'E')).toStrictEqual([
+            'A',
+            'C',
+            'D',
+            'F',
+            'E',
+        ]);
+    });
+});
