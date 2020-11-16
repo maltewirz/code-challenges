@@ -4,7 +4,8 @@
   "description": "A repository of code challenges",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch"
+    "test-ts": "jest --watch",
+    "test-py": "nodemon --ext py --exec python3 src/code-challenges/$KYU/$FOLDER/test_$KATA.py"
   },
   "author": "Malte Wirz <mail@maltewirz.com>",
   "license": "MIT",
