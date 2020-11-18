@@ -60,7 +60,6 @@ export function areThereDuplicatesSolution(...arr: any): boolean {
     let next = 1;
     
     for (let i = 0; i < arr.length; i++) {
-        console.log('hi', i, arr[start], arr[next])
         if (arr[start] === arr[next]) {
             return true;
         }
