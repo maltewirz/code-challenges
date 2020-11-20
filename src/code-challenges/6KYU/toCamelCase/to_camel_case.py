@@ -32,3 +32,8 @@ def to_camel_case(text):
 # Alternative:
 # def to_camel_case(s):
 #     return s[0] + s.title().translate(None, "-_")[1:] if s else s
+
+# Explanations:
+# The title() method returns a copy of the string in which first characters of all the words are capitalized.
+
+# The translate() method returns a copy of the string in which all characters have been translated using table (constructed with the maketrans() function in the string module), optionally deleting all characters found in the string deletechars.
