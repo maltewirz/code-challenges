@@ -45,7 +45,7 @@ class SnakesLadders:
         new_square = self.snakes_and_ladders.get(new_square, new_square)
         self.players[0] = (self.players[0][0], new_square)
         result = (
-            "Player {0} Wins!" if new_square == 100 else "Player {0} is on square {1}"
+            "{0} Wins!" if new_square == 100 else "Player {0} is on square {1}"
         ).format(*self.players[0])
         if die1 != die2:
             self.players.reverse()
