@@ -32,6 +32,7 @@
 
 import math
 
+
 def zero(f=None):
     return 0 if not f else f(0)
 
