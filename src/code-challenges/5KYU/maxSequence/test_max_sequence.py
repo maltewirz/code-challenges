@@ -11,5 +11,6 @@ class Test(unittest.TestCase):
         result = max_sequence([-2, -1, -3, -4, -1, -2, -1, -5, -4])
         self.assertEqual(result, [])
 
+
 if __name__ == "__main__":
     unittest.main()
