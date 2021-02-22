@@ -124,7 +124,22 @@ Story writing: Code is like an essay, you are the author. Make it fun and easy t
 * Save User Data to database: `saveUser()`
 * Validate the user input: `validate()`
 
+### Naming Classes
 
+* Describe the object 
+* `User`
+* Provide more details without introducing redundancy
+* `Customer`
+* Avoid redundant sufixes - Classes typically instantiated
+* `DatabaseManager` makes no sense
+
+#### Example Class Names
+
+* A User: `class User`
+
+* A Database `class Database ` 
+
+  
 
 
 
