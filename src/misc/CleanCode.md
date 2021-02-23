@@ -216,7 +216,43 @@ print(rectangle.getArea())
 rectangle.print_coordinates()
 ```
 
+# Code structure, comments & formatting
 
+### Comments
+
+#### Bad comments:
+
+* Avoid comments with redundant information
+* Dividers / Block markers
+* Misleading Comments
+* Commented-Out Code
+
+#### Good comments
+
+* Legal Information
+* Explanations which can't be replaced by good naming e.g. regex
+* Warnings
+* To-do note 
+
+### Code Formatting
+
+* Code formatting improves readability & transports meaning
+  * Vertical formatting
+    * Space between lines
+    * Grouping of code
+  * Horizontal formatting
+    * Indentation
+    * Space between code
+    * Line width
+* Formatting is important and greatly improves readability
+* Formatting rules differ between languages
+* Follow language-specific conventions and guideline
+
+#### Vertical Formatting
+
+* Code should be readable like an essay - top to bottom without too many "jumps".
+  * Consider splitting files with multiple concepts (e.g., classes) into multiple files
+  * Different concepts ("areas") should be seperated by spacing.
 
 
 
