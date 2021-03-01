@@ -337,4 +337,4 @@ log_storage.insert_file('test.txt', 'Test')
 ## Functions
 
 * Be concise - in every aspect
-* 
+* Test
