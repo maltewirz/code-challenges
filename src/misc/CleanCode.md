@@ -337,4 +337,213 @@ log_storage.insert_file('test.txt', 'Test')
 ## Functions
 
 * Be concise - in every aspect
-* Test
+* Calling the function should be readable
+  * The number and order of arguments matter
+  * Minimize the number of parameters, max 3
+
+```js
+// Reducing number of arguments:
+function saveUser(email, password) {
+  const user = {
+    id: Math.random().toString(),
+    email: email,
+    password: password,
+  };
+
+  db.insert('users', user);
+}
+
+saveUser('test@test.com', 'testers');
+
+function saveUser(user) {
+  db.insert('users', user);
+}
+
+saveUser(newUser);
+
+
+
+class User {
+  constructor(email, password) {
+    this.email = email;
+    this.password = password;
+    this.id = Math.random().toString();
+  }
+
+  save() {
+    db.insert('users', this);
+  }
+}
+
+const user = new User('test@test.com', 'testers');
+user.save();
+
+
+let isLoggedIn = false;
+
+function toggleLoginStatus() {
+  isLoggedIn = !isLoggedIn;
+}
+
+toggleLoginStatus();
+
+
+// One argument functions
+function log(message) {
+  console.log(message);
+}
+
+log('Hi there!');
+
+
+class Message {
+  constructor(message) {
+    this.message = message;
+  }
+
+  log() {
+    console.log(this.message);
+  }
+}
+
+const msg = new Message('Hi!');
+msg.log();
+
+
+
+function square(number) {
+  return number * number;
+}
+
+const result = square(3);
+
+function emailIsValid(email) {
+  return email.includes('@');
+}
+
+const isValid = emailIsValid('max@test.com');
+
+// Two arg functions
+
+function login(email, password) {
+  // Log a user in
+  // ...
+}
+
+login('max@test.com', 'testpassword');
+
+
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+const point = new Point(10, 13);
+```
+
+Dealing with too many arguments:
+
+```js
+class User {
+  constructor(name, age, email) {
+    this.name = name;
+    this.age = age;
+    this.email = email;
+  }
+}
+
+const user = new User('Max', 31, 'max@test.com');
+
+class User {
+  constructor(userData) {
+    this.name = userData.name;
+    this.age = userData.age;
+    this.email = userData.email;
+  }
+}
+
+// The order of arguments does not matter here -> better
+const user = new User({ name: 'Max', email: 'max@test.com', age: 31 });
+
+
+function compare(a, b, comparator) {
+  if (comparator === 'equal') {
+    return a === b;
+  } else if (comparator === 'not equal') {
+    return a !== b;
+  } else if (comparator === 'greater') {
+    return a > b;
+  } else if (comparator === 'smaller') {
+    return a < b;
+  }
+}
+
+const isSmaller = compare(3, 5, 'smaller');
+const isEqual = compare(3, 5, 'equal');
+
+function compare(comparisonData) {
+  const { first, second, comparator } = comparisonData;
+  if (comparator === 'equal') {
+    return first === second;
+  } else if (comparator === 'not equal') {
+    return first !== second;
+  } else if (comparator === 'greater') {
+    return first > second;
+  } else if (comparator === 'smaller') {
+    return first < second;
+  }
+}
+
+const isSmaller = compare({ first: 3, second: 5, comparator: 'smaller' });
+const isSmaller = compare({ comparator: 'equal', first: 3, second: 5 });
+```
+
+Infinite number of arguments:
+
+```js
+function sumUp(...numbers) {
+  let sum = 0;
+  for (const number of numbers) {
+    sum += number;
+  }
+  return sum;
+}
+
+const total = sumUp(10, 19, -3, 22, 5, 100);
+// Input array not needed -> "..." converts input to array
+// const total = sumUp([10, 19, -3, 22, 5, 100]);
+```
+
+Output parameters - to be avoided
+
+```js
+// not good but at least functions implies modification
+function addId(user) {
+  user.id = 'u1';
+}
+
+const user = { name: 'Max' };
+addId(user);
+
+console.log(user);
+
+// better: object oriented approach
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+
+  addId() {
+    this.id = 'u1';
+  }
+}
+
+const customer = new User('Max');
+customer.addId();
+console.log(customer);
+```
+
+* Definition of the function should be easy and readable
+  * The length of the function body matters -> Functions should be small.
