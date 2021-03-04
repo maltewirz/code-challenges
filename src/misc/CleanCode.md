@@ -546,4 +546,59 @@ console.log(customer);
 ```
 
 * Definition of the function should be easy and readable
-  * The length of the function body matters -> Functions should be small.
+  * The length of the function body matters -> Functions should be small. Rule of thumb:
+
+    * Extract code that works on the same functionality. E.g. combine `user.setAge(); user.setName()` into ` user.update()`
+    * Extract code that requires more interpretation that the surrounding code: E.g. `if (!email.includes('@')) ` becomes `if (!isValid())`
+
+  * Functions should do exactly one thing.
+
+    * Different Operations + Different Levels of Abstraction
+      * High Level: Easy to read and no room for interpretation
+      * Low Level: Interpretation must be added by the reader.
+    * Functions should do one thing that's one level of abstraction below their name. ` function emailIsValid(email) => email.includes('@)`
+
+  * Try not to mix levels of abstraction
+
+    
+
+```js
+function createUser(email, password) {
+  if (!userDataIsValid(email, password)) {
+    showValidationErrorMessage();
+    return;
+  }
+
+  const user = buildUser(email, password);
+
+  saveUserToDatabase(user);
+}
+
+function userDataIsValid(email, password) {
+  return emailIsValid(email) && passwordIsValid(password);
+}
+
+function emailIsValid(email) {
+  return email && email.includes('@');
+}
+
+function passwordIsValid(password) {
+  return password && password.trim() !== '';
+}
+
+function showValidationErrorMessage() {
+  console.log('Invalid input!');
+}
+
+function buildUser(email, password) {
+  return {
+    email: email,
+    password: password,
+  };
+}
+
+function saveUserToDatabase(user) {
+  database.insert(user);
+}
+```
+
