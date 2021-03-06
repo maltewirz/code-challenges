@@ -602,3 +602,55 @@ function saveUserToDatabase(user) {
 }
 ```
 
+#### Don't Repeat yourself (DRY)
+
+* Split functions to stay DRY
+* Don't split if
+  * you're just renaming the operation
+  * finding the new function will take longer than reading the extracted code
+  * can't product a reasonable name for the extracted function. 
+
+```js
+// senseful extraction on example:
+class User {
+    constructor(email, password) {
+        this.email = email;
+        this.password = password;
+    }
+    
+    save() {
+        database.insert(this);
+    }
+}
+
+function saveUser(email, password){
+    const user = new User(email, password);
+    user.save();
+}
+```
+
+#### Understanding and Avoiding Side Effects
+
+* Try keeping functions pure: Same Input -> same Output, no side effects
+
+* Side effect: 
+
+  * An operation which does not just act on function inputs and change the function output but which instead changes the overall system/program state. 
+
+  * ```js
+    function createUser(email, password) {
+        const user = new User(email, password);
+        startSession(user); // this is a side effect
+        return user;
+    }
+    ```
+
+  * Side effects are not automatically bad, but unexpected side effects should be avoided:
+
+    * Signal side-effect: The name of a function should signal that a side effect is likely to occur. Expected for `saveUser()` since it changes state of the app but not for `isValid()` .
+    * Move Side-effect into another function.
+
+* Unit Testing Helps
+
+  * Can you easily test a function? If not, split it.
+
