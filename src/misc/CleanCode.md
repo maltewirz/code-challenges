@@ -698,7 +698,19 @@ if (!email.includes('@')) {
   }
   ```
 
-* Error Handling is one thing.
+* Error Handling is **one** thing.
+
+#### Factory Functions & Polymorphism
+
+* Factory function: Function to produce objects or maps:
+
+* ```js
+  function objectNew {
+      return { name: name }
+  }
+  ```
+
+* 
 
 ```js
 // Example Code:
@@ -744,18 +756,18 @@ function main() {
 }
 
 function processTransactions(transactions) {
+  validateTransactions(transactions);
+
+  for (const transaction of transactions) {
+    processTransaction(transaction);
+  }
+}
+
+function validateTransactions(transactions) {
   if (isEmpty(transactions)) {
     const error = new Error('No transactions provided!');
     error.code = 1;
     throw error;
-  }
-
-  for (const transaction of transactions) {
-    try {
-      processTransaction(transaction);
-    } catch (error) {
-      showErrorMessage(error.message, error.item);
-    }
   }
 }
 
@@ -763,14 +775,25 @@ function isEmpty(transactions) {
   return !transactions || transactions.length === 0;
 }
 
-function showErrorMessage(message, item) {
+function showErrorMessage(message, item = {}) {
   console.log(message);
-  if (item) {
-    console.log(item);
-  }
+  console.log(item);
 }
 
 function processTransaction(transaction) {
+  try {
+    validateTransaction(transaction);
+    processWithProcessor(transaction);
+  } catch (error) {
+    showErrorMessage(error.message, error.item);
+  }
+}
+
+function isOpen(transaction) {
+  return transaction.status === 'OPEN';
+}
+
+function validateTransaction(transaction) {
   if (!isOpen(transaction)) {
     const error = new Error('Invalid transaction type.');
     throw error;
@@ -781,18 +804,35 @@ function processTransaction(transaction) {
     error.item = transaction;
     throw error;
   }
+}
 
-  if (usesTransactionMethod(transaction, 'CREDIT_CARD')) {
-    processCreditCardTransaction(transaction);
-  } else if (usesTransactionMethod(transaction, 'PAYPAL')) {
-    processPayPalTransaction(transaction);
-  } else if (usesTransactionMethod(transaction, 'PLAN')) {
-    processPlanTransaction(transaction);
+function processWithProcessor(transaction) {
+  const processors = getTransactionProcessors(transaction);
+
+  if (isPayment(transaction)) {
+    processors.processPayment(transaction);
+  } else {
+    processors.processRefund(transaction);
   }
 }
 
-function isOpen(transaction) {
-  return transaction.status === 'OPEN';
+// Factory function
+function getTransactionProcessors(transaction) {
+  let processors = {
+    processPayment: null,
+    processRefund: null,
+  };
+  if (usesTransactionMethod(transaction, 'CREDIT_CARD')) {
+    processors.processPayment = processCreditCardPayment;
+    processors.processRefund = processCreditCardRefund;
+  } else if (usesTransactionMethod(transaction, 'PAYPAL')) {
+    processors.processPayment = processPayPalPayment;
+    processors.processRefund = processPayPalRefund;
+  } else if (usesTransactionMethod(transaction, 'PLAN')) {
+    processors.processPayment = processPlanPayment;
+    processors.processRefund = processPlanRefund;
+  }
+  return processors;
 }
 
 function usesTransactionMethod(transaction, method) {
@@ -805,30 +845,6 @@ function isPayment(transaction) {
 
 function isRefund(transaction) {
   return transaction.type === 'REFUND';
-}
-
-function processCreditCardTransaction(transaction) {
-  if (isPayment(transaction)) {
-    processCreditCardPayment();
-  } else if (isRefund(transaction)) {
-    processCreditCardRefund();
-  }
-}
-
-function processPayPalTransaction(transaction) {
-  if (isPayment(transaction)) {
-    processPayPalPayment();
-  } else if (isRefund(transaction)) {
-    processPayPalRefund();
-  }
-}
-
-function processPlanTransaction(transaction) {
-  if (isPayment(transaction)) {
-    processPlanPayment();
-  } else if (isRefund(transaction)) {
-    processPlanRefund();
-  }
 }
 
 function processCreditCardPayment(transaction) {
