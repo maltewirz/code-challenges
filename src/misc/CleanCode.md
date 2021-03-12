@@ -654,7 +654,7 @@ function saveUser(email, password){
 
   * Can you easily test a function? If not, split it.
 
-## Control Structures and Errors
+# Control Structures and Errors
 
 #### Keeping Control Structure clean:
 
@@ -873,6 +873,176 @@ function processPlanPayment(transaction) {
 
 function processPlanRefund(transaction) {
   console.log('Processing plan refund for amount: ' + transaction.amount);
+}
+```
+
+# Classes and Objects + Data Structures
+
+* Clean Code: Write code which is readable and easy to understand
+* Patterns and Principles: Write code which is maintainable and extensible
+
+
+
+## Difference between Objects and Data Structures
+
+* Object:
+  * Private internals / properties, public API methods
+  * Contain your business logic (in OOP)
+  * Abstractions over concretions
+* Data Structure / Data Container
+  * Public internals / properties, almost no API methods
+  * Store and transport data
+  * Concretions only
+
+```ts
+let sqlEngine: any;
+
+class Database {
+  private uri: string;
+  private provider: any;
+  public connection: any;
+
+  constructor(uri: string, provider: any) {
+    this.uri = uri;
+    this.provider = provider;
+  }
+
+  connect() {
+    try {
+      this.connection = this.provider.establishConnection(this.uri);
+    } catch (error) {
+      throw new Error('Could not connect!');
+    }
+  }
+
+  disconnect() {
+    this.connection.close();
+  }
+}
+
+const database = new Database('my-database:8100', sqlEngine);
+database.connect();
+
+// this should no be called here, instead call disconnect
+database.connection.close();
+
+
+
+class UserCredentials {
+  public email: string;
+  public password: string;
+}
+```
+
+
+
+### Polymorphism
+
+ * Polymorphism: The ability of an object to take on many forms.
+
+   ```ts
+   type Purchase = any;
+   
+   let Logistics: any;
+   
+   interface Delivery {
+     deliverProduct();
+     trackProduct();
+   }
+   
+   class DeliveryImplementation {
+     protected purchase: Purchase;
+   
+     constructor(purchase: Purchase) {
+       this.purchase = purchase;
+     }
+   }
+   
+   class ExpressDelivery extends DeliveryImplementation implements Delivery {
+     deliverProduct() {
+       Logistics.issueExpressDelivery(this.purchase.product);
+     }
+   
+     trackProduct() {
+       Logistics.trackExpressDelivery(this.purchase.product);
+     }
+   }
+   
+   class InsuredDelivery extends DeliveryImplementation implements Delivery {
+     deliverProduct() {
+       Logistics.issueInsuredDelivery(this.purchase.product);
+     }
+   
+     trackProduct() {
+       Logistics.trackInsuredDelivery(this.purchase.product);
+     }
+   }
+   
+   class StandardDelivery extends DeliveryImplementation implements Delivery {
+     deliverProduct() {
+       Logistics.issueStandardDelivery(this.purchase.product);
+     }
+   
+     trackProduct() {
+       Logistics.trackStandardDelivery(this.purchase.product);
+     }
+   }
+   
+   function createDelivery(purchase) {
+     if (purchase.deliveryType === 'express') {
+       delivery = new ExpressDelivery(purchase);
+     } else if (purchase.deliveryType === 'insured') {
+       delivery = new InsuredDelivery(purchase);
+     } else {
+       delivery = new StandardDelivery(purchase);
+     }
+     return delivery;
+   }
+   
+   let delivery: Delivery = createDelivery({});
+   
+   delivery.deliverProduct();
+   ```
+
+   
+
+### Classes
+
+* Classes should be small - many small classes instead of large class
+* Classes should have a single reponsibility (Single responsibility principle - SRP)
+* A product class is responsible for product "issues" (e.g. change the product name)
+
+```ts
+class Order {
+  public refund() {}
+}
+
+class Customer {
+  private orders: Order[];
+
+  constructor(email: string, password: string) {}
+
+  public login(email: string, password: string) {}
+
+  public updateProfile(name: string) {}
+
+  public makePurchase(productId: string) {}
+}
+
+class Product {
+  constructor(title: string, price: number) {}
+
+  public update(Id: string, title: string, price: number) {}
+
+  public remove(Id: string) {}
+}
+
+class Inventory {
+  private products: Product;
+
+  public getAvailableItems(productId: string) {}
+
+  public restockProduct(productId: string) {}
 }
 ```
 
