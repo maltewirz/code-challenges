@@ -1,6 +1,6 @@
 # Clean Code
 
-### Clean Code Definitions: 
+### Clean Code Definitions:
 
 * Easy to read and understand.
 * Should reduce cognitive load
@@ -1046,3 +1046,239 @@ class Inventory {
 }
 ```
 
+#### Class Cohesion
+
+* How much are your class methods using the class properties?
+* High Cohesion: All methods use all properties
+* No Cohesion: No methods use properties. Data structure with utility methods
+
+
+#### Law of Demeter
+
+* Don't do: `this.customer.lastPurchase.date`
+* Tell, don't ask! `this.warehouse.deliverPurchase(this.customer.lastPurchase)`
+* Principle of Least Knowledge: Don't depend on the internals of "strangers" (other objects which you don't directly know)
+* Only access direct internals (properties and methods) of:
+  * the object it belongs to
+  * objects that are stored in properties of that object
+  * objects which are received as method parameters
+  * objects which are created in the method
+
+```ts
+class Customer {
+  lastPurchase: any;
+
+  getLastPurchaseDate() {
+    return this.lastPurchase.date;
+  }
+}
+
+class DeliveryJob {
+  customer: any;
+  warehouse: any;
+
+  constructor(customer, warehouse) {
+    this.customer = customer;
+    this.warehouse = warehouse;
+  }
+
+  deliverLastPurchase() {
+    // const date = this.customer.lastPurchase.date; // Ex 1: bad
+    // const date = this.customer.getLastPurchaseDate(); // Ex 2: better
+    // this.warehouse.deliverPurchasesByDate(this.customer, date); Ex 2: better
+    this.warehouse.deliverPurchase(this.customer.lastPurchase); // Ex 3: best
+  }
+}
+
+```
+
+#### SOLID Principles
+
+* S **Single Responsibility Principle**
+* O **Open-Closed Principle**
+* L Liskov Substitution Principle
+* I Interface Segregation Principle
+* D Dependency Inversion Principle
+
+##### **Single Responsibility Principle**
+
+* Classes should have a single responsibility - a class shouldn't change for more than one reason.
+
+```ts
+// NOT violating SRP
+class User {
+  login(email: string, password: string) {}
+
+  signup(email: string, password: string) {}
+
+  assignRole(role: any) {}
+}
+
+// Violating SRP
+class ReportDocument {
+  generateReport(data: any) {}
+
+  createPDF(report: any) {}
+}
+```
+
+##### **Open-Closed Principle**
+
+* A class should be open for extension, but closed for modification.
+  * Modification leads to huge classes, while extension leads only to more classes
+  * Smaller classes and DRY code increase readability and maintainability
+
+```ts
+
+// class Printer {
+//   printPDF(data: any) {
+//     // ...
+//   }
+
+//   printWebDocument(data: any) {
+//     // ...
+//   }
+
+//   printPage(data: any) {
+//     // ...
+//   }
+
+//   verifyData(data: any) {
+//     // ...
+//   }
+// }
+
+
+interface Printer {
+  print(data: any);
+}
+
+class PrinterImplementation {
+  verifyData(data: any) {}
+}
+
+class WebPrinter extends PrinterImplementation implements Printer {
+  print(data: any) {
+    // print web document
+  }
+}
+
+class PDFPrinter extends PrinterImplementation implements Printer {
+  print(data: any) {
+    // print PDF document
+  }
+}
+
+class PagePrinter extends PrinterImplementation implements Printer {
+  print(data: any) {
+    // print real page
+  }
+}
+```
+
+##### Liskov Substitution Principle
+
+* Objects should be replacable with instances of their subclasses without altering the behavior.
+
+```ts
+class Bird {}
+
+class FlyingBird extends Bird {
+  fly() {
+    console.log('Flying...');
+  }
+}
+
+class Eagle extends FlyingBird {
+  dive() {
+    console.log('Diving...');
+  }
+}
+
+const eagle = new Eagle();
+eagle.fly();
+eagle.dive();
+
+class Penguin extends Bird {
+  // Problem: Can't fly! - solved by adding FlyingBird class
+}
+```
+
+##### Interface Segregation Principle
+
+* Interfaces are contracts which force classes to implement certain behaviours
+* Many client-specific interfaces are better than one general purpose interface
+
+```ts
+interface Database {
+  storeData(data: any);
+}
+
+interface RemoteDatabase {
+  connect(uri: string);
+}
+
+class SQLDatabase implements Database, RemoteDatabase {
+  connect(uri: string) {
+    // connecting...
+  }
+
+  storeData(data: any) {
+    // Storing data...
+  }
+}
+
+class InMemoryDatabase implements Database {
+  storeData(data: any) {
+    // Storing data...
+  }
+}
+
+```
+
+##### Dependency Inversion Principle
+
+* You should depend upon abstractions, not concretions.
+
+```ts
+interface Database {
+  storeData(data: any);
+}
+
+interface RemoteDatabase {
+  connect(uri: string);
+}
+
+class SQLDatabase implements Database, RemoteDatabase {
+  connect(uri: string) {
+    console.log('Connecting to SQL database!');
+  }
+
+  storeData(data: any) {
+    console.log('Storing data...');
+  }
+}
+
+class InMemoryDatabase implements Database {
+  storeData(data: any) {
+    console.log('Storing data...');
+  }
+}
+
+class App {
+  private database: Database;
+
+  constructor(database: Database) {
+    this.database = database; 
+  }
+
+  saveSettings() {
+    this.database.storeData('Some data');
+  }
+}
+
+
+const sqlDatabase = new SQLDatabase();
+sqlDatabase.connect('my-url');
+const app = new App(sqlDatabase);
+```
