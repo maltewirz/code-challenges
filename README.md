@@ -8,15 +8,16 @@
 2. [Algorithms](src/computer-science/algorithms/) for searching and sorting.
 3. [Data Structures](src/computer-science/data-structures/) like Singly Linked List, Doubly Linked List, Heaps and Trees.
 4. [Solving patterns](src/computer-science/solving-patterns/) like Divide and Conquer, Multiple Pointers and Frequency Counter.
+5. [Clean Code](src/clean-code/) with examples and checklist.
 
 ## Built With
 
-- All code is written using [Typescript](https://www.typescriptlang.org/).
+- All code is written using [Typescript](https://www.typescriptlang.org/) and [Python](https://www.python.org/).
 - The Typescript tests are written with [Jest](https://jestjs.io/en/) for unit testing.
 
 ## Getting Started
 
-For Typescript Challenge
+### For Typescript Challenges
 
 1. Install using `npm i` command in your terminal.
 
