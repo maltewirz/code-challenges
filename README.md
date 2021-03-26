@@ -8,7 +8,7 @@
 2. [Algorithms](src/computer-science/algorithms/) for searching and sorting.
 3. [Data Structures](src/computer-science/data-structures/) like Singly Linked List, Doubly Linked List, Heaps and Trees.
 4. [Solving patterns](src/computer-science/solving-patterns/) like Divide and Conquer, Multiple Pointers and Frequency Counter.
-5. [Clean Code](src/clean-code/) with examples and checklist.
+5. [Clean Code](src/clean-code/) notes, examples and a checklist.
 
 ## Built With
 
