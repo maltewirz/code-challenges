@@ -8,12 +8,12 @@
 2. [Algorithms](src/computer-science/algorithms/) for searching and sorting.
 3. [Data Structures](src/computer-science/data-structures/) like Singly Linked List, Doubly Linked List, Heaps and Trees.
 4. [Solving patterns](src/computer-science/solving-patterns/) like Divide and Conquer, Multiple Pointers and Frequency Counter.
-5. [Clean Code](src/clean-code/) notes, examples and a checklist.
+5. [Clean Code](src/clean-code/) notes, examples and checklist.
 
 ## Built With
 
-- All code is written using [Typescript](https://www.typescriptlang.org/) and [Python](https://www.python.org/).
-- The Typescript tests are written with [Jest](https://jestjs.io/en/) for unit testing.
+- The code is written using Javascript, Typescript and Python.
+- The Typescript tests are written with Jest for unit testing.
 
 ## Getting Started
 
