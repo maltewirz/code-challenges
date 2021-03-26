@@ -4,16 +4,17 @@
 
 ## Purpose
 
-1. [Code Challenges](src/code-challenges/) from Codewars. <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
-2. [Algorithms](src/computer-science/algorithms/) for searching and sorting.
-3. [Data Structures](src/computer-science/data-structures/) like Singly Linked List, Doubly Linked List, Heaps and Trees.
-4. [Solving patterns](src/computer-science/solving-patterns/) like Divide and Conquer, Multiple Pointers and Frequency Counter.
-5. [Clean Code](src/clean-code/) notes, examples and checklist.
+* [Clean Code](src/clean-code/) notes, examples and checklist.
+* [Algorithms](src/computer-science/algorithms/) for searching and sorting.
+* [Data Structures](src/computer-science/data-structures/) like Singly Linked List, Doubly Linked List, Heaps and Trees.
+* [Solving patterns](src/computer-science/solving-patterns/) like Divide and Conquer, Multiple Pointers and Frequency Counter.
+* [Codewars Code Challenges](src/code-challenges/) <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
+* [Leetcode Code Challenges](src/leetcode/)
 
 ## Built With
 
-- The code is written using Javascript, Typescript and Python.
-- The Typescript tests are written with Jest for unit testing.
+* The code is written using Javascript, Typescript and Python.
+* The Typescript tests are written with Jest for unit testing.
 
 ## Getting Started
 
