@@ -1,20 +1,20 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-easy/92/numsay/727/
 
-// Given a sorted numsay nums, remove the duplicates in-place such that each element
+// Given a sorted array nums, remove the duplicates in-place such that each element
 // appears only once and returns the new length.
 
-// Do not allocate extra space for another numsay,
-// you must do this by modifying the input numsay
+// Do not allocate extra space for another array,
+// you must do this by modifying the input array
 // in-place with O(1) extra memory.
 
-export function removeDuplicates(nums: number[]): number {
+export function removeDuplicates(nums: number[]): number {    
     if (nums.length === 0) return 0;
-    let count = 0;
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i] !== nums[count]) {
-            count++;
-            nums[count] = nums[i];
+    let i = 0;
+    for (let j = 1; j < nums.length; j++) {
+        if (nums[j] !== nums[i]) {
+            i++;            
+            nums[i] = nums[j];
         }
-    }
-    return count + 1;
+    }    
+    return i + 1;
 }
