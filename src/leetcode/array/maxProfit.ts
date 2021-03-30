@@ -12,19 +12,13 @@ export function maxProfit(prices: number[]): number {
 }
 
 function calculate(prices: number[], s: number): number {
-    // console.log(prices, s, prices[s]);
-
     if (s >= prices.length) {
         return 0;
     }
     let max = 0;
-    for (let start = s; start < prices.length; start++) {
-        console.log('for loop start', start);
-        
+    for (let start = s; start < prices.length; start++) {        
         let maxProfit = 0;
-        for (let i = start + 1; i < prices.length; i++) {
-            console.log('second for loop', i);
-            
+        for (let i = start + 1; i < prices.length; i++) {            
             if (prices[start] < prices[i]) {
                 const profit = calculate(prices, i + 1) + prices[i] - prices[start];
                 if (profit > maxProfit) {
