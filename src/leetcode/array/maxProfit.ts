@@ -16,9 +16,9 @@ function calculate(prices: number[], s: number): number {
         return 0;
     }
     let max = 0;
-    for (let start = s; start < prices.length; start++) {        
+    for (let start = s; start < prices.length; start++) {
         let maxProfit = 0;
-        for (let i = start + 1; i < prices.length; i++) {            
+        for (let i = start + 1; i < prices.length; i++) {
             if (prices[start] < prices[i]) {
                 const profit = calculate(prices, i + 1) + prices[i] - prices[start];
                 if (profit > maxProfit) {
@@ -36,5 +36,20 @@ function calculate(prices: number[], s: number): number {
 // Complexity Analysis
 
 // Time complexity : O(n^n). Recursive function is called n^n times.
-
 // Space complexity : O(n). Depth of recursion is n.
+
+
+export function maxProfitBest(prices: number[]): number {
+    let maxProfit = 0;
+    for (let i = 0; i < prices.length - 1; i++) {
+        if (prices[i] < prices[i + 1]) {
+            maxProfit += prices[i + 1] - prices[i]
+        }
+    }
+    return maxProfit
+}
+
+// Complexity Analysis
+
+// Time complexity : O(n). Single pass.
+// Space complexity : O(1). Constant space needed.
