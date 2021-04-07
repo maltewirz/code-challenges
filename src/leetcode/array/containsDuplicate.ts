@@ -10,7 +10,7 @@ export function containsDuplicate1(nums: number[]): boolean {
         seen.push(nums[i])
     }
     return false
-};
+}
 
 export function containsDuplicate2(nums: number[]): boolean {
     nums.sort()
@@ -20,9 +20,9 @@ export function containsDuplicate2(nums: number[]): boolean {
         }
     }
     return false
-};
+}
 
 export function containsDuplicate3(nums: number[]): boolean {
-    let set = new Set(nums);
+    const set = new Set(nums);
     return (set.size < nums.length);
-};
+}
