@@ -21,6 +21,12 @@ export function plusOne(digits: number[]): number[] {
     return digits
 }
 
+// Complexity Analysis
+
+// Time complexity : O(n). Maximum one pass along input list
+// Space complexity : O(n). Operation performed in-place, but space needed to hold the result
+// which contains n+1 elements.
+
 
 
 // This approach is not working due to number size limitation:
