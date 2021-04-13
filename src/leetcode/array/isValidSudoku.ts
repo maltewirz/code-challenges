@@ -13,9 +13,9 @@
 
 export function isValidSudoku(board: string[][]): boolean {
     // create an empty set for reach row/col/square
-    const rowRules = new Array(9).fill().map(() => new Set())
-    const colRules = new Array(9).fill().map(() => new Set())
-    const mixedRules = new Array(9).fill().map(() => new Set())
+    const rowRules = new Array(9).fill(undefined).map(() => new Set())
+    const colRules = new Array(9).fill(undefined).map(() => new Set())
+    const mixedRules = new Array(9).fill(undefined).map(() => new Set())
     const sudokoLength = 9
 
     // iterate through each cell on the board
@@ -25,7 +25,7 @@ export function isValidSudoku(board: string[][]): boolean {
 
             // get index of the 3x3 square
             const mixedIdx = Math.floor(row / 3) * 3 + Math.floor(col / 3)
-            
+
             if (curr === '.') continue
 
             // if the current number already exists in set, invalid
@@ -33,8 +33,6 @@ export function isValidSudoku(board: string[][]): boolean {
             const b = colRules[col].has(curr)
             const c = mixedRules[mixedIdx].has(curr)
             if (a || b || c) return false
-            console.log(rowRules);
-            
 
             // add number to set
             rowRules[row].add(curr)
