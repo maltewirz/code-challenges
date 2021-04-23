@@ -30,9 +30,7 @@ export function countAndSay(n: number): string {
 
         let cursor = 0;
         let lastChar = curr[0];
-        let count = 0;
-        console.log('before','cursor',cursor,'curr', curr,'curr length', curr.length, 'count', count);
-        
+        let count = 0;        
 
         while (cursor < curr.length) {
             if (lastChar !== curr[cursor]) {
@@ -45,7 +43,8 @@ export function countAndSay(n: number): string {
         }
         temp += count + lastChar;
         curr = temp;
-        console.log('after','cursor',cursor,'curr', curr, 'count', count);
     }
     return curr;
 }
+
+// Comment: Difficult to understand challenge. Poorly worded from LC.
