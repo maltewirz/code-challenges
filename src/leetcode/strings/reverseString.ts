@@ -8,14 +8,14 @@ export function reverseString(s: string[]): string[] {
 
 export function reverseStringTwoPointer(s: string[]): string[] {
     let left = 0;
-    let right = s.length-1
-    
+    let right = s.length - 1;
+
     while (left < right) {
-        [s[left], s[right]] = [s[right], s[left]]        
+        [s[left], s[right]] = [s[right], s[left]];
         left++;
         right--;
     }
-    return s
+    return s;
 }
 
 // Complexity Analysis

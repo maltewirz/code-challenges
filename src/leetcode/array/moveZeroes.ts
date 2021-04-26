@@ -6,12 +6,12 @@
 
 export function moveZeroes(nums: number[]): number[] {
     for (let i = 0; i < nums.length; i++) {
-        if (nums[i] === 0) {            
-            nums.splice(nums.indexOf(nums[i]), 1)
-            nums.push(0)            
+        if (nums[i] === 0) {
+            nums.splice(nums.indexOf(nums[i]), 1);
+            nums.push(0);
         }
     }
-    return nums
+    return nums;
 }
 
 // Complexity Analysis
@@ -22,20 +22,20 @@ export function moveZeroes(nums: number[]): number[] {
 export function moveZeroes2(nums: number[]): number[] {
     let lastNonZeroFoundAt = 0;
     // if current element is not 0, append it to last non 0 element
-    for (let i = 0; i < nums.length; i++) {        
+    for (let i = 0; i < nums.length; i++) {
         if (nums[i] != 0) {
-            nums[lastNonZeroFoundAt++] = nums[i]
-        }        
+            nums[lastNonZeroFoundAt++] = nums[i];
+        }
     }
 
     for (let i = lastNonZeroFoundAt; i < nums.length; i++) {
-        nums[i] = 0
+        nums[i] = 0;
     }
-    return nums
+    return nums;
 }
 
 // Complexity Analysis
 
 // Space Complexity : O(1). Only constant space is used.
-// Time Complexity: O(n). However, the total number of 
+// Time Complexity: O(n). However, the total number of
 // operations are still sub-optimal. The total operations (array writes) that code does is n (Total number of elements).

@@ -10,9 +10,9 @@ export function rotate1(nums: number[], k: number): number[] | undefined {
         }
         return nums;
     }
-};
+}
 
 export function rotate2(nums: number[], k: number): number[] | undefined {
-    nums.unshift(...nums.splice(nums.length - k))
-    return nums
-};
+    nums.unshift(...nums.splice(nums.length - k));
+    return nums;
+}

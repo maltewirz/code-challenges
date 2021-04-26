@@ -4,22 +4,22 @@
 
 export function isAnagram(s: string, t: string): boolean {
     if (s.length !== t.length) {
-        return false
+        return false;
     }
-    const freqCountS: { [key: string]: number } = {}
-    const freqCountT: { [key: string]: number } = {}
-    s.split('').forEach(l => {
-        freqCountS[l] = (freqCountS[l] | 0) + 1
-    })
-    t.split('').forEach(l => {
-        freqCountT[l] = (freqCountT[l] | 0) + 1
-    })
+    const freqCountS: { [key: string]: number } = {};
+    const freqCountT: { [key: string]: number } = {};
+    s.split('').forEach((l) => {
+        freqCountS[l] = (freqCountS[l] | 0) + 1;
+    });
+    t.split('').forEach((l) => {
+        freqCountT[l] = (freqCountT[l] | 0) + 1;
+    });
     for (const key in freqCountT) {
         if (freqCountS[key] !== freqCountT[key]) {
-            return false
+            return false;
         }
     }
-    return true
+    return true;
 }
 
 // Complexity analysis
@@ -27,22 +27,21 @@ export function isAnagram(s: string, t: string): boolean {
 // Time complexity : O(n). Time complexity is O(n) because accessing the counter
 // table is a constant time operation.
 
-// Space complexity : O(1). Although we do use extra space, the space complexity is O(1) 
+// Space complexity : O(1). Although we do use extra space, the space complexity is O(1)
 // because the table's size stays constant no matter how large n is.
-
 
 export function isAnagram2(s: string, t: string): boolean {
     if (s.length !== t.length) {
-        return false
+        return false;
     }
-    const sArr = s.split('').sort()
-    const tArr = t.split('').sort()
+    const sArr = s.split('').sort();
+    const tArr = t.split('').sort();
     for (let i = 0; i < sArr.length; i++) {
         if (sArr[i] !== tArr[i]) {
-            return false
+            return false;
         }
     }
-    return true
+    return true;
 }
 
 // Complexity analysis
@@ -50,4 +49,4 @@ export function isAnagram2(s: string, t: string): boolean {
 // Time complexity : O(n log n). Assume that n is the length of s,
 // sorting costs O(n log n) and comparing two strings costs O(n).
 
-// Space complexity : Space costs O(1) 
+// Space complexity : Space costs O(1)

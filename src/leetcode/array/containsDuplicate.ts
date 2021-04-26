@@ -2,27 +2,27 @@
 // twice in the array, and return false if every element is distinct.
 
 export function containsDuplicate1(nums: number[]): boolean {
-    const seen: number[] = []
+    const seen: number[] = [];
     for (let i = 0; i < nums.length; i++) {
         if (seen.includes(nums[i])) {
-            return true
+            return true;
         }
-        seen.push(nums[i])
+        seen.push(nums[i]);
     }
-    return false
+    return false;
 }
 
 export function containsDuplicate2(nums: number[]): boolean {
-    nums.sort()
+    nums.sort();
     for (let i = 0; i < nums.length - 1; i++) {
         if (nums[i] === nums[i + 1]) {
-            return true
+            return true;
         }
     }
-    return false
+    return false;
 }
 
 export function containsDuplicate3(nums: number[]): boolean {
     const set = new Set(nums);
-    return (set.size < nums.length);
+    return set.size < nums.length;
 }

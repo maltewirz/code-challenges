@@ -7,4 +7,4 @@ test('Basic Test', () => {
     expect(isAnagram2('anagram', 'nagaram')).toStrictEqual(true);
     expect(isAnagram2('rat', 'car')).toStrictEqual(false);
     expect(isAnagram2('ab', 'a')).toStrictEqual(false);
-})
+});
