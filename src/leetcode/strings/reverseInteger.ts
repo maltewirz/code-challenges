@@ -6,9 +6,9 @@
 // Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
 
 export function reverseInteger(x: number): number {
-    const maxInteger: number = Math.pow(2, 31) - 1
+    const maxInteger: number = Math.pow(2, 31) - 1;
     const output: number = Math.abs(
-        parseInt(x.toString().split("").reverse().join(""))
-    )
-    return output > maxInteger ? 0 : output * Math.sign(x)
+        parseInt(x.toString().split('').reverse().join(''))
+    );
+    return output > maxInteger ? 0 : output * Math.sign(x);
 }

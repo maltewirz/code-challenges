@@ -13,40 +13,39 @@
 
 export function isValidSudoku(board: string[][]): boolean {
     // create an empty set for reach row/col/square
-    const rowRules = new Array(9).fill(undefined).map(() => new Set())
-    const colRules = new Array(9).fill(undefined).map(() => new Set())
-    const mixedRules = new Array(9).fill(undefined).map(() => new Set())
-    const sudokoLength = 9
+    const rowRules = new Array(9).fill(undefined).map(() => new Set());
+    const colRules = new Array(9).fill(undefined).map(() => new Set());
+    const mixedRules = new Array(9).fill(undefined).map(() => new Set());
+    const sudokoLength = 9;
 
     // iterate through each cell on the board
     for (let row = 0; row < sudokoLength; row++) {
         for (let col = 0; col < sudokoLength; col++) {
-            const curr = board[row][col]
+            const curr = board[row][col];
 
             // get index of the 3x3 square
-            const mixedIdx = Math.floor(row / 3) * 3 + Math.floor(col / 3)
+            const mixedIdx = Math.floor(row / 3) * 3 + Math.floor(col / 3);
 
-            if (curr === '.') continue
+            if (curr === '.') continue;
 
             // if the current number already exists in set, invalid
-            const a = rowRules[row].has(curr)
-            const b = colRules[col].has(curr)
-            const c = mixedRules[mixedIdx].has(curr)
-            if (a || b || c) return false
+            const a = rowRules[row].has(curr);
+            const b = colRules[col].has(curr);
+            const c = mixedRules[mixedIdx].has(curr);
+            if (a || b || c) return false;
 
             // add number to set
-            rowRules[row].add(curr)
-            colRules[col].add(curr)
-            mixedRules[mixedIdx].add(curr)
-
+            rowRules[row].add(curr);
+            colRules[col].add(curr);
+            mixedRules[mixedIdx].add(curr);
         }
     }
-    return true
+    return true;
 }
 
 // rule 1: for each row array entry: loop over row - OK
 // rule 2: for each row.length: loop over column[row.length]
-// rule 3: for row 1: 
+// rule 3: for row 1:
 
 // interface KeyValue { [key: string]: number }
 // let rowStore: KeyValue = {};

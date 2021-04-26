@@ -16,10 +16,9 @@ export function myAtoi(s: string): number {
     if (parsedInt < minRange) {
         return minRange;
     }
-    const maxRange = Math.pow(2, 31)-1;
+    const maxRange = Math.pow(2, 31) - 1;
     if (parsedInt > maxRange) {
         return maxRange;
     }
     return parsedInt;
 }
-

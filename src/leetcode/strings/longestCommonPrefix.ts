@@ -18,9 +18,9 @@ export function longestCommonPrefix(strs: string[]): string {
             if (prefix.length === 0) {
                 return '';
             }
-        }        
+        }
     }
-    return prefix
+    return prefix;
 }
 
 // Complexity Analysis

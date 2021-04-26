@@ -7,14 +7,14 @@
 // you must do this by modifying the input array
 // in-place with O(1) extra memory.
 
-export function removeDuplicates(nums: number[]): number {    
+export function removeDuplicates(nums: number[]): number {
     if (nums.length === 0) return 0;
     let i = 0;
     for (let j = 1; j < nums.length; j++) {
         if (nums[j] !== nums[i]) {
-            i++;            
+            i++;
             nums[i] = nums[j];
         }
-    }    
+    }
     return i + 1;
 }

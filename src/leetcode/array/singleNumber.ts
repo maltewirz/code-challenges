@@ -3,20 +3,19 @@
 // Find that single one.
 
 export function singleNumber(nums: number[]): number | undefined {
-
     const freqObject: {
         [key: string]: number;
-    } = {}
+    } = {};
 
     for (let i = 0; i < nums.length; i++) {
-        const curr = nums[i]
+        const curr = nums[i];
         freqObject[curr] = (freqObject[curr] | 0) + 1;
     }
 
     for (const prop in freqObject) {
         if (freqObject[prop] === 1) {
-            return Number(prop)
+            return Number(prop);
         }
     }
-    return undefined
+    return undefined;
 }

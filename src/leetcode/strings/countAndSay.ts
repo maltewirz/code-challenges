@@ -23,14 +23,14 @@
 // order they're presented.
 
 export function countAndSay(n: number): string {
-    let curr = "1";
+    let curr = '1';
 
     for (let i = 1; i < n; i++) {
-        let temp = "";
+        let temp = '';
 
         let cursor = 0;
         let lastChar = curr[0];
-        let count = 0;        
+        let count = 0;
 
         while (cursor < curr.length) {
             if (lastChar !== curr[cursor]) {

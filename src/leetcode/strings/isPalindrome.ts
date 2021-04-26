@@ -2,10 +2,14 @@
 // Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
 
 export function isPalindrome(s: string): boolean {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
-    const original = s.toLowerCase().split('').filter(l => alphabet.includes(l)).join('')    
-    const reversed = original.split('').reverse().join('')
-    
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    const original = s
+        .toLowerCase()
+        .split('')
+        .filter((l) => alphabet.includes(l))
+        .join('');
+    const reversed = original.split('').reverse().join('');
+
     return original === reversed;
 }
 
@@ -14,4 +18,3 @@ export function isPalindrome(s: string): boolean {
 // Time complexity : O(n), in length n of the string.
 
 // Space complexity : O(n), in length n of the string. We need O(n) additional space to stored the filtered string and the reversed string.
-

@@ -7,18 +7,18 @@
 // You may assume the integer does not contain any leading zero, except the number 0 itself.
 
 export function plusOne(digits: number[]): number[] {
-    for (let i = digits.length-1; i >= 0; i--) {        
-        if (digits[i] < 9) {            
-            digits[i] = digits[i] + 1
-            return digits
-        } else {            
-            digits[i] = 0
+    for (let i = digits.length - 1; i >= 0; i--) {
+        if (digits[i] < 9) {
+            digits[i] = digits[i] + 1;
+            return digits;
+        } else {
+            digits[i] = 0;
             if (i == 0) {
-                digits.unshift(1)
-            }            
+                digits.unshift(1);
+            }
         }
     }
-    return digits
+    return digits;
 }
 
 // Complexity Analysis
@@ -26,8 +26,6 @@ export function plusOne(digits: number[]): number[] {
 // Time complexity : O(n). Maximum one pass along input list
 // Space complexity : O(n). Operation performed in-place, but space needed to hold the result
 // which contains n+1 elements.
-
-
 
 // This approach is not working due to number size limitation:
 // export function plusOne(digits: number[]): number[] {
