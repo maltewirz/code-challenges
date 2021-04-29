@@ -2,81 +2,72 @@
 
 // Given the head of a linked list, remove the nth node from the end of the list and return its head.
 
-/**
- * Definition for singly-linked list.
- * class ListNode {
- *     val: number
- *     next: ListNode | null
- *     constructor(val?: number, next?: ListNode | null) {
- *         this.val = (val===undefined ? 0 : val)
- *         this.next = (next===undefined ? null : next)
- *     }
- * }
- *  The "dummy" node is used to simplify some corner cases
- *  such as a list with only one node, or removing the head of the list. 
- */
+class ListNode {
+    val: number;
+    next: ListNode | null;
+    constructor(val?: number, next?: ListNode | null) {
+        this.val = val === undefined ? 0 : val;
+        this.next = next === undefined ? null : next;
+    }
+}
 
+// Two pass approach
 export function removeNthFromEnd(
     head: ListNode | null,
     n: number
 ): ListNode | null {
-    let dummy = new ListNode(0);
+    // Create dummy for corner cases- e.g. one node
+    const dummy = new ListNode(0);
     dummy.next = head;
     let length = 0;
     let first = head;
-
+    // loop through linkedList to get length
     while (first != null) {
         length++;
         first = first.next;
     }
-
+    // adjust length to get to n
     length -= n;
     first = dummy;
-
+    // loop until at nth element
     while (length > 0) {
         length--;
         first = first.next;
     }
-    first.next = first.next.next
-    return dummy.next
-
+    //now remove the next item at this node and assign after next
+    first.next = first.next.next;
+    return dummy.next;
 }
 
-//loop through values with a counter, until count == n
-// the do same operation as deleteNode and return head.
-// node.val = node.next.val;
-// node.next = node.next.next;
+// Complexity Analysis
 
-    // let count = 0;
-    // let current = head;
-    // // console.log(n);
+// Time complexity : O(L) The algorithm makes two traversals of the list of 2L nodes.
 
-    // while (count <= n) {
-    //     current = current.next
-    //     count++;
-    //     if (count === n) {
-    //         current.val = head.next.val;
-    //         current.next = current.next.next
-    //     }
-    // }
-    // return head;
+// Space complexity : O(1). We only used constant extra space.
 
+// One pass approach
+export function removeNthFromEndOnePass(
+    head: ListNode | null,
+    n: number
+): ListNode | null {
+    const dummy = new ListNode(0);
+    dummy.next = head;
+    let first = dummy;
+    let second = dummy;
 
+    for (let i = 1; i <= n + 1; i++) {
+        first = first.next;
+    }
+    while (first != null) {
+        first = first.next;
+        second = second.next;
+    }
+    second.next = second.next.next;
+    return dummy.next;
+}
 
+// Complexity Analysis
 
+// Time complexity : O(L) The algorithm makes one traversal of the list of L nodes.
 
-    // let fast = head;
-    // let slow = head;
-
-    // for (let i = 0; i < n; i++) {
-    //     fast = fast.next;
-    // }
-    // if (!fast) {
-    //     return head.next;
-    // }
-    // while (fast.next) {
-    //     fast = fast.next
-    //     slow = slow.next
-    // }
-    // slow.next = slow.next.next
-    // return head
+// Space complexity : O(1). We only used constant extra space.
