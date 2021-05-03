@@ -21,24 +21,24 @@ function mergeTwoLists(
     l2: ListNode | null
 ): ListNode | null {
     // maintain an unchanging reference to node ahead of the return code
-    const prehead: ListNode = new ListNode(-1);
-    let prev: ListNode = prehead;
+    const tempNode: ListNode = new ListNode(0, null);
+    let currentNode: ListNode = tempNode;
 
     while (l1 != null && l2 != null) {
         if (l1.val <= l2.val) {
-            prev.next = l1;
+            currentNode.next = l1;
             l1 = l1.next;
         } else {
-            prev.next = l2;
+            currentNode.next = l2;
             l2 = l2.next;
         }
-        prev = prev.next;
+        currentNode = currentNode.next;
     }
 
     // at least one of l1 and l2 can still have nodes at this point, so connect
     // the non-null list to the end of the merged list.
-    prev.next = l1 == null ? l2 : l1;
-    return prehead.next;
+    currentNode.next = l1 == null ? l2 : l1;
+    return tempNode.next;
 }
 
 // Recursive Solution:
