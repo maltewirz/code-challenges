@@ -22,9 +22,12 @@ function mergeTwoLists(
 ): ListNode | null {
     // maintain an unchanging reference to node ahead of the return code
     const tempNode: ListNode = new ListNode(0, null);
+    // create a new node called currentNode
     let currentNode: ListNode = tempNode;
-
+    // loop while there is a value both in l1 and l2
     while (l1 != null && l2 != null) {
+        // if l1 value smaller than l2, assign it to currentNode.next
+        // and assign the next l1 value to the l1 head
         if (l1.val <= l2.val) {
             currentNode.next = l1;
             l1 = l1.next;
@@ -32,6 +35,7 @@ function mergeTwoLists(
             currentNode.next = l2;
             l2 = l2.next;
         }
+        // then assign the next currentNode to be the current
         currentNode = currentNode.next;
     }
 
