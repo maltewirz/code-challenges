@@ -28,7 +28,7 @@ function isSymmetric(root: TreeNode | null): boolean {
         if (t1 === null || t2 === null) {
             return false;
         }
-
+        // Compare the left and right subtree
         return (
             t1.val === t2.val &&
             helper(t1.right, t2.left) &&
