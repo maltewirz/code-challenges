@@ -9,16 +9,7 @@
 // Input: root = [1,2,2,null,3,null,3]
 // Output: false
 
-class TreeNode {
-    val: number;
-    left: TreeNode | null;
-    right: TreeNode | null;
-    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-        this.val = val === undefined ? 0 : val;
-        this.left = left === undefined ? null : left;
-        this.right = right === undefined ? null : right;
-    }
-}
+import { TreeNode } from './ITreeNode';
 
 function isSymmetric(root: TreeNode | null): boolean {
     function helper(t1: TreeNode | null, t2: TreeNode | null): boolean {
