@@ -21,9 +21,9 @@ export function merge(
     n: number
 ): number[] {
     const nums = nums1.slice(0, m).concat(nums2.slice(0, n));
-    nums.sort((a:number, b: number) => a - b);
-    nums.forEach((num, i) => nums1[i] = num)
-    return nums1
+    nums.sort((a: number, b: number) => a - b);
+    nums.forEach((num, i) => (nums1[i] = num));
+    return nums1;
 }
 
 // Alternative uses less memory:
@@ -34,17 +34,19 @@ export function merge2(
     nums2: number[],
     n: number
 ): number[] {
-    let len = m + n;
-    m--;
-    n--;
-
-    while (n >= 0) {
-        len--;
-        if (nums1[m] >nums2[n]) {
-            nums1[len] = nums1[m--]
+    // while the length of the n (nums2.length) is greater than 0
+    while (n) {
+        // if the last value of nums1 is greater then last value of nums2
+        if (nums1[m - 1] > nums2[n - 1]) {
+            // assign last item in nums1 to end of array and decrease m
+            nums1[m + n - 1] = nums1[m - 1];
+            m--;
+        // if the last value of nums2 is greater than last value of nums1
         } else {
-            nums1[len] = nums2[n--]
+            // then insert nums2 value into last values of nums1
+            nums1[m + n - 1] = nums2[n - 1];
+            n--;
         }
     }
-    return nums1
+    return nums1;
 }
