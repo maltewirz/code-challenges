@@ -23,7 +23,7 @@ export function linearSearch(arr: string[], val: string): number {
 // * Much faster form of search for **sorted** arrays
 // * Rather than eliminating one element at a time, you can eliminate
 //      half of the remaining elements at a time.
-// * Example: See Divide and Conque solving pattern
+// * Example: See Divide and Conquer solving pattern
 
 // #### Binary Search Big O
 
