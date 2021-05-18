@@ -23,19 +23,37 @@
 // Input: n = 1, bad = 1
 // Output: 1
 
+// Scenario #1: isBadVersion(mid) => false
+
+//  1 2 3 4 5 6 7 8 9
+//  G G G G G G B B B       G = Good, B = Bad
+//  |       |       |
+// left    mid    right
+
+// Scenario #2: isBadVersion(mid) => true
+
+//  1 2 3 4 5 6 7 8 9
+//  G G G B B B B B B       G = Good, B = Bad
+//  |       |       |
+// left    mid    right
+
+// binary search
 export function solution(isBadVersion: any) {
     return function (n: number): number {
-        let left = 0;
+        let left = 1;
         let right = n;
-
-        while (right - left !== 1) {
-            const mid = Math.floor(left + right / 2)
+        while (left < right) {
+            const mid = Math.floor(left + (right - left) / 2);
             if (isBadVersion(mid)) {
-                right = mid;
+                right = mid; // look on left side of mid
             } else {
-                left = mid;
+                left = mid + 1; // look on the right side of mid
             }
         }
-        return right;
+        return left;
     };
 }
+
+// Complexity analysis
+// Time complexity : O(logn). The search space is halved each time
+// Space complexity : O(1)
