@@ -37,6 +37,19 @@
 //  |       |       |
 // left    mid    right
 
+//  1 2 3 4 5
+//  G G G B B 
+//  l   m   r
+
+//  1 2 3 4 5
+//  G G G B B 
+//        l r
+
+//  1 2 3 4  5
+//  G G G B  B 
+//        lr      
+
+
 // binary search
 export function solution(isBadVersion: any) {
     return function (n: number): number {
@@ -55,5 +68,5 @@ export function solution(isBadVersion: any) {
 }
 
 // Complexity analysis
-// Time complexity : O(logn). The search space is halved each time
+// Time complexity : O(log n). The search space is halved each time
 // Space complexity : O(1)
