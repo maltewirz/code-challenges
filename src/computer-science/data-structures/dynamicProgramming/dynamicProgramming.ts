@@ -28,9 +28,8 @@ export function fibonacciMemo(n: number, memo: number[]): number {
     if (n <= 2) {
         return 1;
     }
-    const res = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo);
-    memo[n] = res;
-    return res;
+    memo[n] = fibonacciMemo(n - 1, memo) + fibonacciMemo(n - 2, memo);
+    return memo[n];
 }
 
 // # Tabulation

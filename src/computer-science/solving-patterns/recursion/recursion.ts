@@ -91,7 +91,7 @@ export function recursiveRange(num: number): number {
 
 // fib
 // Takes a number and returns the nth number in the Fibonacci sequence. Recall that the Fibonacci sequence
-// is the sequemce pf whole number 1,1,2,3,5,8... which starts with 1 and 1 and where every number thereafter
+// is the sequence pf whole number 1,1,2,3,5,8... which starts with 1 and 1 and where every number thereafter
 // is equal to the sum of the previous two numbers.
 
 export function fib(num: number): number {
