@@ -38,6 +38,9 @@ export function climbStairs(n: number): number {
     return helper(n);
 }
 
+// Runtime: 72 ms
+// Memory Usage: 38.9 MB
+
 // Alternative without helper:
 // function climbStairs(n: number, memo: number[]): number {
 //     if (memo[n] !== undefined) {
@@ -61,3 +64,6 @@ export function climbStairsIterative(n: number): number {
     }
     return arr[n-1]
 }
+
+// Runtime: 80 ms
+// Memory Usage: 38.8 MB
