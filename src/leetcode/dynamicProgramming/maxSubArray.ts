@@ -28,9 +28,7 @@ export function maxSubArray(nums: number[]): number {
             for (let j = i; j <= i + win; j++) {
                 tempMax += nums[j];
             }
-            if (tempMax > max) {
-                max = tempMax;
-            }
+            max = Math.max(tempMax, max);
         }
     }
     return max;
@@ -43,7 +41,7 @@ export function maxSubArray(nums: number[]): number {
 // Alternative with single pass
 export function maxSubArray2(nums: number[]): number {
     let prev = 0;
-    let max = -Infinity;
+    let max = nums[0]; // or: -Infinity
 
     for (let i = 0; i < nums.length; i++) {
         prev = Math.max(prev + nums[i], nums[i]);
