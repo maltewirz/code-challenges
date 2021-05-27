@@ -22,9 +22,11 @@
 // Total amount you can rob = 2 + 9 + 1 = 12.
 
 export function rob(nums: number[]): number {
+    console.log(nums, nums.length, nums[nums.length-1])
     return helper(nums.length -1)
 
     function helper(i: number): number {
+        console.log('called for i', i)
         if (i < 0) {
             return 0;
         }
@@ -42,4 +44,10 @@ export function rob(nums: number[]): number {
 
 // A: robbery of current house + loot from houses before the previous
 // B: loot from the previous house robbery and any loot captured before that
-// rob(i) = Math.max( rob(i - 2) + currentHouseValue, rob(i - 1) )
+// rob(i) = Math.max(rob(i - 2) + currentHouseValue,     rob(i - 1))
+
+// Example: [1, 2, 3, 1]
+// Option A: rob current i and i-2 : Example: 1 (the last) + 2
+// Option B: rob i-1 : Example 3 + 1 = 4 (winner)
+
+
