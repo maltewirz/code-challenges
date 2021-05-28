@@ -21,20 +21,7 @@
 // Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
 // Total amount you can rob = 2 + 9 + 1 = 12.
 
-export function rob(nums: number[]): number {
-    console.log(nums, nums.length, nums[nums.length-1])
-    return helper(nums.length -1)
-
-    function helper(i: number): number {
-        console.log('called for i', i)
-        if (i < 0) {
-            return 0;
-        }
-        return Math.max(helper(i-2) + nums[i], helper(i-1))
-    }
-}
-
-// Solution explanation:
+// Solution explanation recursive top down approach:
 // A robber has 2 options: a) rob current house i; b) don't rob current house.
 // If an option "a" is selected it means she can't rob previous i-1 house but can
 // safely proceed to the one before previous i-2 and gets all cumulative loot that follows.
@@ -44,10 +31,44 @@ export function rob(nums: number[]): number {
 
 // A: robbery of current house + loot from houses before the previous
 // B: loot from the previous house robbery and any loot captured before that
-// rob(i) = Math.max(rob(i - 2) + currentHouseValue,     rob(i - 1))
+// rob(i) = Math.max( currentHouseValue + rob(i - 2) , rob(i - 1))
 
 // Example: [1, 2, 3, 1]
 // Option A: rob current i and i-2 : Example: 1 (the last) + 2
 // Option B: rob i-1 : Example 3 + 1 = 4 (winner)
 
+// Recursive top down approach;
+export function robRecursive(nums: number[]): number {
+    return helper(nums.length - 1);
 
+    function helper(i: number): number {
+        if (i < 0) {
+            return 0;
+        }
+        return Math.max(nums[i] + helper(i - 2), helper(i - 1));
+    }
+}
+
+// Iterative bottom up approach with memo
+export function robIterative(nums: number[]): number {
+    if (nums.length === 0) {
+        return 0;
+    }
+    if (nums.length === 1) {
+        return nums[0];
+    }
+    // The three lines below not needed, manual overview of process
+    // if (nums.length === 2) {
+    //     return Math.max(nums[0], nums[1]);
+    // }
+
+    const memo = [];
+    // The amount of money we can rob to the first house (0 index) is:
+    memo[0] = nums[0];
+    // The amount of money we can rob to the second house is the richest from the first two houses:
+    memo[1] = Math.max(nums[0], nums[1]);
+    for (let i = 2; i < nums.length; i++) {
+        memo[i] = Math.max(nums[i] + memo[i - 2], memo[i - 1]);
+    }
+    return memo[nums.length - 1];
+}
