@@ -1,7 +1,6 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-easy/98/design/562/
 
 // Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
-
 // Implement the MinStack class:
 
 // MinStack() initializes the stack object.
