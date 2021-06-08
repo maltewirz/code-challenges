@@ -29,25 +29,26 @@
 // minStack.top();    // return 0
 // minStack.getMin(); // return -2
 
-class MinStack {
+export class MinStack {
+    public stack: number[] = [];
     constructor() {
-
+        this.stack = [];
     }
 
     push(val: number): void {
-
+        this.stack.push(val);
     }
 
     pop(): void {
-
+        this.stack.splice(-1,1)
     }
 
     top(): number {
-
+        return this.stack[this.stack.length-1]
     }
 
     getMin(): number {
-
+        return Math.min(...this.stack)
     }
 }
 
