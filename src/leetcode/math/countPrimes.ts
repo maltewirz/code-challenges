@@ -1,8 +1,5 @@
 // https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/744/
 
-import { lookup } from 'dns';
-import { primeFactors } from '../../code-challenges/5KYU/primeFactors/primeFactors';
-
 // Count the number of prime numbers less than a non-negative number, n.
 
 // Example 1:
@@ -72,8 +69,9 @@ export function countPrimesAlgo(n: number): number {
 	// mark 1 as false as it is not prime for sure
     isPrime[1] = false;
     // start looping from 2 as we already mark 1 as Not Prime before
-
     for (let i = 2; i * i < n; i++) {
+        // i.e. n = 100, i = 2, j = 4, 6, 8, ...
+        // 4, 6, 8, ... will be marked as false and can be skipped
         if (!isPrime[i]) {
             continue;
         }
