@@ -22,6 +22,11 @@
 // Output: false
 
 export function isPowerOfThree(n: number): boolean {
-    console.log(n, n % 3 === 0)
-    return n % 3 === 0;
+    if (n === 1) {
+        return true;
+    } else if (n > 1 && n % 3 === 0) {
+        return isPowerOfThree(n / 3);
+    } else {
+        return false;
+    }
 }
