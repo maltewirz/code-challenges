@@ -31,12 +31,27 @@
 // Explanation: The input binary string 11111111111111111111111111111101 has a
 // total of thirty one '1' bits.
 
+// note: not bit correct solution
 export function hammingWeight(n: string): number {
-    let count = 0
-    n.split('').forEach(char => {
+    let count = 0;
+    n.split('').forEach((char) => {
         if (char === '1') {
-            count++
+            count++;
         }
-    })
+    });
     return count;
+}
+
+// note: bit correct solution
+export function hammingWeightCorrect(n: string): number {
+    let bits = 0;
+    let mask = 1;
+
+    for (let i = 0; i < 32; i++) {
+        if ((n & mask) != 0) {
+            bits++;
+        }
+        mask <<= 1;
+    }
+    return bits;
 }
