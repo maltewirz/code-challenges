@@ -47,15 +47,7 @@ export function missingNumber(nums: number[]): number {
 
 // Alternative:
 export function missingNumberAlternative(nums: number[]): number {
-    // const expectedSum = (nums.length * (nums.length + 1)) / 2;
-    // const actualSum = nums.reduce((a, b) => a + b);
-    // return expectedSum - actualSum;
-
-    const range = [0,nums.length];
-    for(let i = 0; i < range[1]+1; i++){
-        if (!nums.includes(i)){
-            return i;
-        }
-    }
-    return -1
+    const expectedSum = (nums.length * (nums.length + 1)) / 2;
+    const actualSum = nums.reduce((a, b) => a + b);
+    return expectedSum - actualSum;
 }
