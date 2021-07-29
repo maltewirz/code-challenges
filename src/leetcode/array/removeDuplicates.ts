@@ -10,6 +10,7 @@
 export function removeDuplicates(nums: number[]): number {
     if (nums.length === 0) return 0;
     let i = 0;
+    
     for (let j = 1; j < nums.length; j++) {
         if (nums[j] !== nums[i]) {
             i++;
@@ -24,7 +25,7 @@ export function removeDuplicatesSecondTry(nums: number[]): number {
 
     for (let fast = 0; fast < nums.length; fast++) {
         if (nums[slow] !== nums[fast]) {
-            slow += 1;
+            slow++;
             nums[slow] = nums[fast];
         }
     }
