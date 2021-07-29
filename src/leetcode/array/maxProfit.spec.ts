@@ -1,4 +1,4 @@
-import { maxProfit, maxProfitBest } from './maxProfit';
+import { maxProfit, maxProfitBest, maxProfitBestSecond } from './maxProfit';
 
 test('Basic Test maxProfit', () => {
     expect(maxProfit([1, 2, 3, 4, 5])).toStrictEqual(4);
@@ -8,4 +8,7 @@ test('Basic Test maxProfit', () => {
 test('Basic Test maxProfitBest', () => {
     expect(maxProfitBest([1, 2, 3, 4, 5])).toStrictEqual(4);
     expect(maxProfitBest([7, 1, 5, 3, 6, 4])).toStrictEqual(7);
+
+    expect(maxProfitBestSecond([1, 2, 3, 4, 5])).toStrictEqual(4);
+    expect(maxProfitBestSecond([7, 1, 5, 3, 6, 4])).toStrictEqual(7);
 });
