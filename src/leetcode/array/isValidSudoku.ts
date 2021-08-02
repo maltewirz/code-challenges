@@ -11,6 +11,35 @@
 // A Sudoku board (partially filled) could be valid but is not necessarily solvable.
 // Only the filled cells need to be validated according to the mentioned rules.
 
+// Example 1:
+
+// Input: board =
+// [["5","3",".",".","7",".",".",".","."]
+// ,["6",".",".","1","9","5",".",".","."]
+// ,[".","9","8",".",".",".",".","6","."]
+// ,["8",".",".",".","6",".",".",".","3"]
+// ,["4",".",".","8",".","3",".",".","1"]
+// ,["7",".",".",".","2",".",".",".","6"]
+// ,[".","6",".",".",".",".","2","8","."]
+// ,[".",".",".","4","1","9",".",".","5"]
+// ,[".",".",".",".","8",".",".","7","9"]]
+// Output: true
+// Example 2:
+
+// Input: board =
+// [["8","3",".",".","7",".",".",".","."]
+// ,["6",".",".","1","9","5",".",".","."]
+// ,[".","9","8",".",".",".",".","6","."]
+// ,["8",".",".",".","6",".",".",".","3"]
+// ,["4",".",".","8",".","3",".",".","1"]
+// ,["7",".",".",".","2",".",".",".","6"]
+// ,[".","6",".",".",".",".","2","8","."]
+// ,[".",".",".","4","1","9",".",".","5"]
+// ,[".",".",".",".","8",".",".","7","9"]]
+// Output: false
+// Explanation: Same as Example 1, except with the 5 in the top left corner being modified to 8.
+// Since there are two 8's in the top left 3x3 sub-box, it is invalid.
+
 export function isValidSudoku(board: string[][]): boolean {
     // create an empty set for reach row/col/square
     const rowRules = new Array(9).fill(undefined).map(() => new Set());
@@ -23,8 +52,8 @@ export function isValidSudoku(board: string[][]): boolean {
         for (let col = 0; col < sudokoLength; col++) {
             const curr = board[row][col];
 
-            // get index of the 3x3 square
-            const mixedIdx = Math.floor(row / 3) * 3 + Math.floor(col / 3);
+            // get index of the 3x3 square. We multiply by three (either col or row works) to adjust for dimension.
+            const mixedIdx = Math.floor(row / 3) + Math.floor(col / 3) * 3;
 
             if (curr === '.') continue;
 
