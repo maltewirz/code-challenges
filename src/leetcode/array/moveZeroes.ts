@@ -53,3 +53,19 @@ export function moveZeroes2(nums: number[]): number[] {
 // Space Complexity : O(1). Only constant space is used.
 // Time Complexity: O(n). However, the total number of
 // operations are still sub-optimal. The total operations (array writes) that code does is n (Total number of elements).
+
+
+export function moveZeroes3(nums: number[]): number[] {
+    let slow = 0;
+    // if current element is not 0, append it to last non 0 element
+    for (let fast = 0; fast < nums.length; fast++) {
+        if (nums[fast] != 0) {
+            nums[slow++] = nums[fast];
+        }
+    }
+
+    for (let i = slow; i < nums.length; i++) {
+        nums[i] = 0;
+    }
+    return nums;
+}
