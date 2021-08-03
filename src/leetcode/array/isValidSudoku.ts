@@ -106,6 +106,7 @@ export function isValidSudoku2(board: string[][]): boolean {
 }
 
 /**
+ * Steps:
  * 1. fill sets for col, row, mixedIdx
  * 2. loop over row and col
  * 3. for each entry, check if already in set, if yes return false, of no add
