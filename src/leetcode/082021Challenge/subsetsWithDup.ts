@@ -23,20 +23,18 @@
 export function subsetsWithDup(nums: number[]): number[][] {
     nums = nums.sort((a, b) => a - b);
 
-    const res: number[][] = []
+    const res: number[][] = [];
 
     const dfs = (nums: number[], i: number, arr: number[]) => {
         if (i === nums.length) {
-            res.push(arr)
+            res.push(arr);
             return;
         }
-        dfs(nums, i+1, arr)
-        const newArr = arr.concat(nums[i])
-        dfs(nums, i+1, newArr)
-
-
-    }
-    dfs(nums, 0, [])
+        dfs(nums, i + 1, arr);
+        const newArr = arr.concat(nums[i]);
+        dfs(nums, i + 1, newArr);
+    };
+    dfs(nums, 0, []);
 
     // cleaning duplicates from result
     //Alternative:
