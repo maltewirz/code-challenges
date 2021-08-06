@@ -3,7 +3,7 @@
 export function orderWeight(str: string):string {
     const arr: number[] = [];
     str.split(' ').forEach(number => {
-        if (number !== '') {  
+        if (number !== '') {
             arr.push(Number(number));
         }
     })
@@ -40,3 +40,23 @@ export function orderWeight(str: string):string {
 //     return sum + Number(next);
 //   }, 0);
 // }
+
+
+function orderWeight2(strng: string) {
+    // Convert string to array, seperated by space.
+    const arr = strng.split(' ');
+    
+    // Use JS sorting function, calcute the sum for the respective digits.
+    //
+    arr.sort((a, b) => {
+        numberA = a.split('').reduce((acc, curr) => Number(acc) + Number(curr));
+        numberB = b.split('').reduce((acc, curr) => Number(acc) + Number(curr));
+        // If converted numbers are similar, sort according to string.
+        if (numberA === numberB) {
+            return String(a) < String(b) ? -1 : 1;
+        }
+        // If converted numbers are different, sort according to integer value.
+        return numberA - numberB;
+    });
+    return arr.join(' ');
+}
