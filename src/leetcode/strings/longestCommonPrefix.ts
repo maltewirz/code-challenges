@@ -3,7 +3,6 @@
 
 // If there is no common prefix, return an empty string "".
 
-
 // Example 1:
 // Input: strs = ["flower","flow","flight"]
 // Output: "fl"
@@ -12,7 +11,6 @@
 // Input: strs = ["dog","racecar","car"]
 // Output: ""
 // Explanation: There is no common prefix among the input strings.
- 
 
 export function longestCommonPrefix(strs: string[]): string {
     if (strs.length === 0) {
@@ -39,3 +37,19 @@ export function longestCommonPrefix(strs: string[]): string {
 // Time complexity : O(S) , where S is the sum of all characters in all strings.
 
 // Space complexity : O(1). We only used constant extra space.
+
+export function longestCommonPrefix2(strs: string[]): string {
+    // loop through first item
+    for (let i = 0; i < strs[0].length; i++) {
+        const currChar = strs[0][i]
+        // compare currChar to equivalent in other strings
+        for (const str in strs) {
+            // if not similar, return sliced copy until that point
+            if (currChar !== strs[str][i]) {
+                return strs[0].slice(0, i);
+            }
+        }
+    }
+    // if full string similar, return full string
+    return strs[0];
+}
