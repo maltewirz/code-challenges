@@ -56,7 +56,10 @@ export function removeNthFromEnd(
 // Time complexity : O(n) The algorithm makes two traversals of the list of 2n nodes.
 // Space complexity : O(1). We only used constant extra space.
 
-// One pass approach
+// One pass approach:
+// Send currentFast variable to the nth position.
+// Then move currentFast and slow variable until currentFast reaches end.
+// Now the slow variable is where the deletion should occur.
 export function removeNthFromEndOnePass(
     head: ListNode | null,
     n: number
@@ -82,22 +85,19 @@ export function removeNthFromEndOnePass(
 // Time complexity : O(n) The algorithm makes one traversal of the list of n nodes.
 // Space complexity : O(1). We only used constant extra space.
 
-
-
-
 function removeNthFromEnd2(head: ListNode | null, n: number): ListNode | null {
-    const dummy = new ListNode(0)
-    dummy.next = head
-    let current = dummy
+    const dummy = new ListNode(0);
+    dummy.next = head;
+    let current = dummy;
     let length = 0;
     while (current.next) {
         length++;
-        current = current.next
+        current = current.next;
     }
-    current = dummy
-    for (let i = 0; i < length-n; i++) {
-        current = current.next
+    current = dummy;
+    for (let i = 0; i < length - n; i++) {
+        current = current.next;
     }
-    current.next = current.next.next
-    return head
-};
+    current.next = current.next.next;
+    return head;
+}

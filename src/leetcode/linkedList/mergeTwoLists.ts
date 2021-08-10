@@ -21,9 +21,9 @@ function mergeTwoLists(
     l2: ListNode | null
 ): ListNode | null {
     // maintain an unchanging reference to node ahead of the return code
-    const tempNode: ListNode = new ListNode(0, null);
+    const head: ListNode = new ListNode(0, null);
     // create a new node called currentNode
-    let currentNode: ListNode = tempNode;
+    let currentNode: ListNode = head;
     // loop while there is a value both in l1 and l2
     while (l1 != null && l2 != null) {
         // if l1 value smaller than l2, assign it to currentNode.next
@@ -42,7 +42,7 @@ function mergeTwoLists(
     // at least one of l1 and l2 can still have nodes at this point, so connect
     // the non-null list to the end of the merged list.
     currentNode.next = l1 == null ? l2 : l1;
-    return tempNode.next;
+    return head.next;
 }
 
 // Recursive Solution:
@@ -66,3 +66,25 @@ function mergeTwoListsRecursive(
 // Recursive pattern:
 // list1[0]+merge(list1[1:],list2) // list1[0]<list2[0]:
 // list2[0]+merge(list1,list2[1:])     // otherwise
+
+
+function mergeTwoLists2(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+    let tempNode: ListNode = new ListNode(0, null);
+    const head = tempNode;
+    
+    while (l1 !== null && l2 !== null) {
+        
+        if (l1.val <= l2.val) {
+            tempNode.next = l1
+            l1 = l1.next
+        } else {
+            tempNode.next = l2
+            l2 = l2.next
+        }
+        tempNode = tempNode.next
+    }
+    
+    tempNode.next = l1 || l2
+       
+    return head.next
+};
