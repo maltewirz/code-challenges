@@ -15,10 +15,11 @@ import { TreeNode } from './ITreeNode';
 // Output: 3
 
 function maxDepthRecursive(root: TreeNode | null): number {
+    // if the node does not exist, simply return 0.
     if (root == null) {
         return 0;
     }
-
+    // Otherwise, return the +1 longer distance of its subtree.
     const left = maxDepthRecursive(root.left);
     const right = maxDepthRecursive(root.right);
 
