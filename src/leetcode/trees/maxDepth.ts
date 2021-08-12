@@ -26,6 +26,13 @@ function maxDepthRecursive(root: TreeNode | null): number {
     return Math.max(left, right) + 1;
 }
 
+/**
+ * Queue state:
+ * 3  (2 children found: 9,20)
+ * 9, 20 (2 children found under 20: 15,7 )
+ * 15,7 (0 children found)
+ */
+
 function maxDepthIterative(root: TreeNode | null): number {
     if (!root) {
         return 0;
