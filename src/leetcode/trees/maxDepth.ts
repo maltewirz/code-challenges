@@ -53,22 +53,6 @@ function maxDepthIterative(root: TreeNode | null): number {
     return depth;
 }
 
-// Manual:
-// Queue: [ [3,9,20,null,null,15,7] ] - Länge 1
-// Tiefe 1
-
-// for loop von 0 bis 1 -> *3* und 9 (nächste)
-// für index 0 (3): hat kinder 9 und 20 -> beide in queue gepusht. [ [9], [20] ]
-// für index 1 (9): keine kinder - nichts in queue gepusht
-
-// for loop von 0 bis 2 -> *9*, *20* und ?
-// für index 0 (9): keine kinder, [20]
-// für index 1 (20): kinder 15 und 7 -> beides in queue gepsuht [[15],[7]]
-// für index 2 (15): keinde kinder, [7]
-
-// for loop von 0 bis 1 -> *7* und []
-// für index 0 (7): keine kinder
-// für index 1 (): keine kinder
 
 function maxDepthIterative2(root: TreeNode | null): number {
     const queue: {
