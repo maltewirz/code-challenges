@@ -46,13 +46,14 @@ export function isValidSudoku(board: string[][]): boolean {
     const colRules = new Array(9).fill(undefined).map(() => new Set());
     const mixedRules = new Array(9).fill(undefined).map(() => new Set());
     const sudokoLength = 9;
-
+    // console.log(rowRules, rowRules[0].add(5), rowRules, rowRules[0].has(5))
     // iterate through each cell on the board
     for (let row = 0; row < sudokoLength; row++) {
         for (let col = 0; col < sudokoLength; col++) {
             const curr = board[row][col];
 
-            // get index of the 3x3 square. We multiply by three (either col or row works) to adjust for dimension.
+            // get index of the 3x3 square. We multiply by three
+            // (either col or row works) to adjust for dimension.
             const mixedIdx = Math.floor(row / 3) + Math.floor(col / 3) * 3;
 
             if (curr === '.') continue;
@@ -72,25 +73,42 @@ export function isValidSudoku(board: string[][]): boolean {
     return true;
 }
 
-// rule 1: for each row array entry: loop over row - OK
-// rule 2: for each row.length: loop over column[row.length]
-// rule 3: for row 1:
+export function isValidSudoku2(board: string[][]): boolean {
+    const rows = new Array(9).fill(undefined).map((x) => new Set(x));
+    const cols = new Array(9).fill(undefined).map((x) => new Set(x));
+    const grid = new Array(9).fill(undefined).map((x) => new Set(x));
+    for (let row = 0; row < rows.length; row++) {
+        for (let col = 0; col < cols.length; col++) {
+            const curr = board[row][col];
 
-// interface KeyValue { [key: string]: number }
-// let rowStore: KeyValue = {};
-// for (let i = 0; i < board[0].length - 7; i++) {
-//     console.log('full row', board[i]);
-//     const row = board[i];
-//     for (let j = 0; j < row.length; j++) {
-//         if (row[j] === '.') {
-//             continue
-//         }
-//         console.log('row contents', row[j], rowStore);
-//         rowStore[row[j]] = (rowStore[row[j]] | 0) + 1
-//         console.log('store', rowStore, 'item', row[j]);
-//         if (rowStore[row[j]] > 1) {
-//             return false
-//         }
-//     }
-//     rowStore = {}
-// }
+            const gridIdx = Math.floor(row / 3) + Math.floor(col / 3) * 3;
+
+            if (curr === '.') {
+                continue;
+            }
+
+            const rowCheck = rows[row].has(curr);
+            const colCheck = cols[col].has(curr);
+            const mixedIdxCheck = grid[gridIdx].has(curr);
+
+            if (rowCheck || colCheck || mixedIdxCheck) {                
+                return false;
+            }
+
+            rows[row].add(curr);
+            cols[col].add(curr);
+            grid[gridIdx].add(curr);
+
+        }
+    }
+
+    return true;
+}
+
+/**
+ * Steps:
+ * 1. fill sets for col, row, mixedIdx
+ * 2. loop over row and col
+ * 3. for each entry, check if already in set, if yes return false, of no add
+ * 4. return true
+ */

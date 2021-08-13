@@ -9,6 +9,20 @@
 // needle is an empty string. This is consistent to C's
 // strstr() and Java's indexOf().
 
+
+// Example 1:
+
+// Input: haystack = "hello", needle = "ll"
+// Output: 2
+// Example 2:
+
+// Input: haystack = "aaaaa", needle = "bba"
+// Output: -1
+// Example 3:
+
+// Input: haystack = "", needle = ""
+// Output: 0
+
 export function strStr(haystack: string, needle: string): number {
     if (needle.length === 0) {
         return 0;

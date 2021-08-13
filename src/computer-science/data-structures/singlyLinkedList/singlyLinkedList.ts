@@ -1,7 +1,7 @@
 // #### Singly Linked Lists:
 // * A data structure that contains a head, tail and length property.
 // * Linked Lists consists of nodes, and each node has a value and a pointer to another node or null.
-// * Each node is connected one-directionaly to the next node
+// * Each node is connected one-directionally to the next node
 // HEAD     LENGTH:4       TAIL
 // 4   ->   6   ->  8   ->  2
 //    NEXT     NEXT    NEXT
@@ -16,7 +16,7 @@
 
 // * Indexed in order!
 // * Insertion and deletion can be expensive
-// * Can quickyl be accessed at a specific index
+// * Can quickly be accessed at a specific index
 
 // #### Big O Notation
 // * Insertion O(1)
@@ -26,9 +26,11 @@
 
 // ### Summary
 
-// * Singly Linked Lists are an excellent alternative to arrays when optimizing for insertion and deletion at the beginning are often required.
+// * Singly Linked Lists are an excellent alternative to arrays when optimizing for insertion
+//      and deletion at the beginning are often required.
 // * Arrays contain a built in index whereas Linked Lists do not
-// * The idea of a list data structure that consists of nodes is a the foundation for other data structures like stacks and queues.
+// * The idea of a list data structure that consists of nodes is a the foundation for
+//      other data structures like stacks and queues.
 
 export class Node {
     val: number;
