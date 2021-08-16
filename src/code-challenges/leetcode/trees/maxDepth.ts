@@ -33,7 +33,7 @@ function maxDepthRecursive(root: TreeNode | null): number {
  * 15,7 (0 children found)
  */
 
-function maxDepthIterative(root: TreeNode | null): number {
+function maxDepthIterativeBreadthFirst(root: TreeNode | null): number {
     if (!root) {
         return 0;
     }

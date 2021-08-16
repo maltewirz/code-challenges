@@ -77,7 +77,7 @@ function isValidBSTRecursive(
 // Time: O(n)
 // Space: O(n)
 
-function isValidBST2(root: TreeNode | null): boolean | number {
+function isValidBSTDepthFirst(root: TreeNode | null): boolean | number {
     if (root === null) {
         return true;
     }
@@ -107,4 +107,28 @@ function isValidBST2(root: TreeNode | null): boolean | number {
         }
     }
     return true;
+}
+
+function isValidBSTDepthFirst2(root: TreeNode | null): boolean | number {
+    if (root === null) {
+        return true
+    }
+
+    const stack = [{node: root, min: -Infinity, max: Infinity}]
+
+    while (stack.length > 0) {
+        const {node, min, max} = stack.pop() // using shift or pop is both accepted
+
+        if (node.val <= min || node.val >= max) {
+            return false
+        }
+
+        if (node.left) {
+            stack.push({node: node.left, min, max: node.val})
+        }
+        if (node.right) {
+            stack.push({node: node.right, min: node.val, max})
+        }
+    }
+    return true
 }
