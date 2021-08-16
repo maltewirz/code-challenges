@@ -1,4 +1,4 @@
-//leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/625/
+// leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/625/
 // Given the root of a binary tree, determine if it is a valid binary search tree (BST).
 
 // A valid BST is defined as follows:
@@ -22,12 +22,13 @@
 // 4       6
 //       3   7
 
+import { Z_PARTIAL_FLUSH } from 'zlib';
 import { TreeNode } from './ITreeNode';
 
-
 function isValidBST(root: TreeNode | null): boolean | number {
+    // Sanity check for passing test case '[]'
     if (!root) {
-        return true; // Sanity check for passing test case '[]'
+        return true;
     }
 
     function helper(
@@ -35,15 +36,17 @@ function isValidBST(root: TreeNode | null): boolean | number {
         min: number | null,
         max: number | null
     ): any {
+        // We hit the end of the path
         if (!root) {
-            return true; // We hit the end of the path
+            return true;
         }
 
+        // current node's val doesn't satisfy the BST rules
         if (
             (min !== null && root.val <= min) ||
             (max !== null && root.val >= max)
         ) {
-            return false; // current node's val doesn't satisfy the BST rules
+            return false;
         }
 
         // Continue to scan left and right
@@ -73,3 +76,35 @@ function isValidBSTRecursive(
 // Complexity
 // Time: O(n)
 // Space: O(n)
+
+function isValidBST2(root: TreeNode | null): boolean | number {
+    if (root === null) {
+        return true;
+    }
+    const queue = [root];
+    const min: any[] = [-Infinity];
+    const max: any[] = [Infinity];
+
+    while (queue.length > 0) {
+        const current = queue.shift();
+        const minCurr = min.shift();
+        const maxCurr = max.shift();
+
+        if (current) {
+            if (current.val <= minCurr || current.val >= maxCurr) {
+                return false;
+            }
+            if (current?.right) {
+                queue.push(current.right);
+                min.push(current.val);
+                max.push(maxCurr);
+            }
+            if (current?.left) {
+                queue.push(current.left);
+                min.push(minCurr);
+                max.push(current.val);
+            }
+        }
+    }
+    return true;
+}
