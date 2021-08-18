@@ -22,7 +22,6 @@
 // 4       6
 //       3   7
 
-import { Z_PARTIAL_FLUSH } from 'zlib';
 import { TreeNode } from './ITreeNode';
 
 function isValidBST(root: TreeNode | null): boolean | number {

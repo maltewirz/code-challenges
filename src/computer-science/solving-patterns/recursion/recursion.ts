@@ -2,7 +2,7 @@
 
 // Factorial function that takes a number and gives back the multiplied numbers leading up to it.
 
-export function factorial(num: number): number {
+export function factorial(num: number): number {    
     if (num === 1) {
         return num;
     }
@@ -33,7 +33,7 @@ export function collectOddValuesHelperMethod(arr: number[]): number[] {
 
 // Hints for pure recursion:
 // * For arrays, use methods like **slice** , **the spread operator**, and **concat** that make copies of arrays so you do not mutate them
-// * Remember that strings are immutable so you will need to use methods like **slice, subst or substrin**g  to make copies of strings
+// * Remember that strings are immutable so you will need to use methods like **slice, subst or substring**  to make copies of strings
 // * To make copies of objects use Object.assign, or the spread operator
 
 export function collectOddValuesPureRecursion(arr: number[]): number[] {
@@ -51,7 +51,7 @@ export function collectOddValuesPureRecursion(arr: number[]): number[] {
 }
 
 // power
-// Function aceppts a base and an exponent. Return the power of the base to the exponent.
+// Function accepts a base and an exponent. Return the power of the base to the exponent.
 
 // Manual example:
 // 2^4 = 2*2*2*2
@@ -71,7 +71,12 @@ export function power(a: number, b: number): number {
 
 // productOfArray
 // Takes array of numbers and returns the product of them all.
-
+// Manual example for [1,2,3]:
+// return 1 * product([2,3])
+//              return 2 * product([3])
+//                              return 3 * product([])
+//                                             return 1
+// = 1 * 2 * 3 * 1 
 export function productOfArray(arr: number[]): number {
     if (arr.length < 1) {
         return 1;
