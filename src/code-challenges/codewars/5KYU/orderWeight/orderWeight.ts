@@ -49,13 +49,16 @@ function orderWeight2(strng: string) {
     // Use JS sorting function, calcute the sum for the respective digits.
     //
     arr.sort((a, b) => {
-        numberA = a.split('').reduce((acc, curr) => Number(acc) + Number(curr));
-        numberB = b.split('').reduce((acc, curr) => Number(acc) + Number(curr));
+        // @ts-ignore
+        const numberA = a.split('').reduce((acc, curr) => Number(acc) + Number(curr));
+        // @ts-ignore
+        const numberB = b.split('').reduce((acc, curr) => Number(acc) + Number(curr));
         // If converted numbers are similar, sort according to string.
         if (numberA === numberB) {
             return String(a) < String(b) ? -1 : 1;
         }
         // If converted numbers are different, sort according to integer value.
+        // @ts-ignore
         return numberA - numberB;
     });
     return arr.join(' ');

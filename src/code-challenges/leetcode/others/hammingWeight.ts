@@ -48,6 +48,7 @@ export function hammingWeightCorrect(n: string): number {
     let mask = 1;
 
     for (let i = 0; i < 32; i++) {
+        // @ts-ignore
         if ((n & mask) != 0) {
             bits++;
         }
