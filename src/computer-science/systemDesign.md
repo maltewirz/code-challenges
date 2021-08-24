@@ -110,19 +110,86 @@ Review Materials:
 
 # 8 Databases
 
+## Relational Database
 
+* Strictly enforced relationships between things stored in the database.
+* Highly structured and impose structure on all the entities.
+* SQL enable more complex queries than non-relational databases.
 
+## ACID
 
+* ACID describes features that a good relational database must support
+  * Atomic - Either the entire transaction success or roll-back.
+  * Consistent - no corruption
+  * Isolation - run queries concurrently
+  * Durable - persistent
 
+## Non-relational Database
 
+* NoSQL db are more flexible. 
+* Data is stored inside key value pairs, ideal for Caching, env variables, config files etc.
+* Base describes features that a good noSQL database must support
+  * Basically available - guarantee of availability
+  * Soft state - system may change over time, even without input
+  * Eventual Consistency -  System will become consistent over a period of time.
 
+## Database Indexing
 
+* Indexing ensures that specific searches are improved. E.g 120 m records, indexed upon age.
+* Available for both Sql and noSql DB
 
+## Replication and Sharding
 
+* Replication means making copies of the DB to ensure redundancy and therefore - high availability.
+  * Can be done sync oder asynchronously
+* Sharding: If DB is to big for replications, it can be chunked into shards. Breaks huge DB into smaller DB.
 
+# 9 Leader Election
 
+* In some cases a single point of contact (primary server) is needed for a task like updating a third party API
+* A consensus algorithm is needed to make server agree on a leader server.
+  * This is typically implemented by using `etcd` which stores key-value pairs with high availability and strong consistency. This is the final source of truth about who is the leader.
 
+# 10 Polling and Streaming 
 
+* Techniques to have data updated.
 
+## Polling
 
+* Have the client check on a server for updated data in intervals of e.g. 5 minutes.
+* Due to heavy server load for continuous polling, it is best used in circumstances where small gaps in data updates don't matter.
 
+## Streaming
+
+* Streaming enables live updates through web sockets, a communication protocol that keeps connection live until closed.
+* The client is on standby waiting for server to push data without opening/closing connections -> Stream.
+
+# 11 Endpoint Protection
+
+* Rata limiting is done to protect the endpoint and mitigate denial of service attacks (DOS).
+* Example is rate limiting check via Redis in-memory database so false requests can be denied quickly.
+
+# 12 Messaging & Pub-Sub
+
+* Messaging is important for async tasks, e.g. sending a booking pdf after clicking through UI.
+
+## Publisher / Subscriber Messaging
+
+* Publishers publish a message and subscriber subscribe to a message, e.g. through a "channel".
+* Publisher and subscriber are completely decoupled, they don't need to know each other.
+* System can offer features like "at least once" delivery. 
+* Idempotency: An Operation that has no additional effect if it is called more than once with the same input parameters. E.g. if pay button clicked three times on checkout, still only one checkout.
+
+# 13 Smaller Essentials
+
+## Logging
+
+* Logging is important for analytics, optimization and debugging
+
+## Monitoring
+
+* Which data that is logged needs to be monitored, typically time-series data
+
+## Alerting
+
+* For significant events that were observed during monitoring, you need to be alerted, e.g. latency spikes.
