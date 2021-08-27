@@ -24,7 +24,7 @@ Review Materials:
   * Consistency: Every read receives the most recent write or an error
   * Availability: Every request receives a response, without the guarantee that it contains the most recent write.
   * Partition tolerance: The system continues to operate despite an arbitrary number of messages being dropped or delayed by the network between nodes.
-  * *Example* : SQL DB choose Consitency over Availability, while NoSQL DB chose Availability over Consitency.
+  * *Example* : SQL DB choose Consistency over Availability, while NoSQL DB chose Availability over Consistency.
 * ACID vs BASE == SQL vs NoSQL
   * ACID describes features that a good relational database must support
     * Atomic - Either the entire transaction success or roll-back.

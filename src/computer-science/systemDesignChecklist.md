@@ -52,7 +52,7 @@
   
   * Caches
     * Caching on Client, CDN, Webserver, DB, App, Query, Object
-    * Eviction Policy: cache aside, write through, write behind, refresh ahead
+    * Eviction Policy: LRU, LFU, FIFO
   * Asynchronism
     * Message queues, Task queues, Back pressure
   * Communication
