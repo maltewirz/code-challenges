@@ -7,7 +7,8 @@
 * [Clean Code](src/clean-code/) notes, examples and checklist.
 * [Algorithms](src/computer-science/algorithms/) for searching and sorting.
 * [Data Structures](src/computer-science/data-structures/) like Singly Linked List, Doubly Linked List, Heaps and Trees.
-* [Solving patterns](src/computer-science/solving-patterns/) like Divide and Conquer, Multiple Pointers and Frequency Counter.
+* [Solving Patterns](src/computer-science/solving-patterns/) like Divide and Conquer, Multiple Pointers and Frequency Counter.
+* [System Design](src/computer-science/system-design/) documents including a checklist.
 * [Codewars Code Challenges](src/code-challenges/codewars) <img src="https://www.codewars.com/users/maltewirz/badges/micro" alt="Codewars profile tag" />
 * [Leetcode Code Challenges](src/code-challenges/leetcode/)
 * [Other Code Challenges](src/code-challenges/other/)
