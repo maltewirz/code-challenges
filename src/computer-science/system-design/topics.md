@@ -1,0 +1,8 @@
+- Database architecture design
+- Deployment
+- Scaling/autoscaling
+- Monitoring
+- Microservice architecture approach
+- Microservices vs Monolith
+- Justifications/digging deep into all of the above
+- Possess strong Unit Testing skills

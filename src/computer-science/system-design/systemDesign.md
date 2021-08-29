@@ -40,9 +40,22 @@ Review Materials:
 * Optimistic vs pessimistic locking (Sharepoint vs Google Docs)
   * Optimistic: Only before commiting the transaction, you check if the record was updated.
   * Pessimistic: Acquire all locks beforehand, then commit transaction.
-* Strong vs eventual consistency
-  * Strong: You reads are guaranteed to see the latest write
-  * Eventual: Your reads will eventually see the latest write
+* Consistency
+  * Strong: You reads are guaranteed to see the latest write (RDBMS)
+  * Eventual: Your reads will eventually see the latest write (Email)
+  * Weak: Your reads will or will not see the latest write (VoIP)
+* Availability
+  * Failover Active-passive: Heartbeats sent from active to passive server. If heartbeat interrupted, passive server takes over. Potential data loss in between missed heartbeat and take-over.
+  * Failover Active-active: Both servers are managing traffic and spread traffic.
+  * Replication Master-slave: Master serves reads and writes, replicating writes to slaves, slaves serve read only. Slave can become master with additional logic.
+  * Replication Master-Master: Both master serve reads and writes and replicate between each other. Increased latency for sync OR loosely consistent.
+    * Replication issues:
+    * More slaves, more replication lag
+    * Data loss if master fails before replication
+  * Availability uptime numbers. Calculation depends if systems are in parallel or in sequence (two available system with 99.9% result in 99.9999% availability)
+    * 99.9 %    8h per year
+    * 99.99 %   1h per year
+    * 99.999 %  5m per year
 * SQL vs NoSQL
   * SQL: provides ACID properties
   * NoSQL: scales better and higher availability
@@ -73,14 +86,17 @@ Review Materials:
   * TCP reliable e.g. Documents
   * UDP unreliable e.g. Video
 * DNS lookup
+  * DNS server have Records for NameServer  (NS), MailExchange (MX), IP, CanonicalName (CNAME) example -> www.example.com
+  * Managed DNS Services can route traffic with Weighted Round Robin, Latency-based, Geolocation-based.
+  * DNS disadvantages: Slight delay, complex.
 * HTTPS & TLS
 * Public Key Infrastructure & Certificate Authority
 * Symmetric vs asymetric encryption - Symetric is fast (AES), asymetric is great for exchanging (Pub/Sec)
 * Load Balancer -> L4 vs L7
   * L4: Considers both client and destination IP addresses and port numbers for routing
   * L7: Considers HTTP URI for routing
-* CDN & Edge 
-  * CDN: delivering eg. media
+* CDN & Edge
+  * CDN: delivering eg. media. Can be push or pull.
   * Edge: Internet of things use case, brings computation and storage closer to source of data
 * Bloom filter & count-min sketch: Space efficient probabilistic based data structures
   * Bloom filter: can have false positives but no false negatives.
@@ -124,8 +140,6 @@ Review Materials:
   * Kubernetes & Mesos Container Management Platform
 * Hadoop / Spark
   * Big data management systems
-
-
 
 # 1 Networks and Protocols
 
