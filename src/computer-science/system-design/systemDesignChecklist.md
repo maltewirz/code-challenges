@@ -10,14 +10,14 @@
 
 ## 2 Estimations
 
-* Throughput (Queries per second for read/write)
-* Latency expected from the system (read/write queries)
-* Read / Write Ratio
-* Traffic estimates (read/write volume)
-* Storage estimates
-* Memory estimates
-  * If we are using cache, what kind of data?
-  * How much RAM and machines for that to achieve?
+* IO
+  * Throughput (Queries read:  write:)
+  * Latency expected from the system (Queries read:  write:)
+* Read / Write
+  * Ratio (x:y)
+  * Traffic estimates (Mbps read:  write:)
+  * Storage estimates (GB read:  write:)
+  * Memory estimates  (GB read:  write:)
 
 ## 3 High Level Design
 
@@ -45,7 +45,6 @@
       * RAM: Redis, Memcached
       * AP (Availability, Partition): Cassandra
       * CP (Consistency, Partition): MongoDB, DynamoDB
-  
   * Caches
     * Caching on Client, CDN, Webserver, DB, App, Query, Object
     * Eviction Policy: LRU, LFU, FIFO

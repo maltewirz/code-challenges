@@ -10,7 +10,7 @@ Notes from https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-
 
 ## Database
 
-* Pattern A to keep SQL running: Do master-slave replication (read from slaves, write to master). If more perfomance needed: sharding, denomalization, sql-tuning (each more time-consuming)
+* Pattern A to keep SQL running: Do master-slave replication (read from slaves, write to master). If more performance needed: sharding, denormalization (adding redundant data to avoid joins), sql-tuning (each more time-consuming)
 * Pattern B: Denormalize from beginning and include no more joins in any database query. Use SQL as NoSQL DB or switch to MongoDB. Joins are now done in app code.
 * Typically the bottleneck now is the missing cache.
 
@@ -23,4 +23,4 @@ Notes from https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-
 ## Asynchronism
 
 * Pattern A: Preprocessing e.g. of dynamic websites and offloading them to CDN.
-* Pattern B: User starts compute intensive task. Task has to be queued. Tool for this is RabbitMQ
+* Pattern B: User starts compute intensive task. Task has to be queued. Tool for this is RabbitMQ.

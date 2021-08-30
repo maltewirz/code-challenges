@@ -92,6 +92,10 @@ Review Materials:
 * HTTPS & TLS
 * Public Key Infrastructure & Certificate Authority
 * Symmetric vs asymetric encryption - Symetric is fast (AES), asymetric is great for exchanging (Pub/Sec)
+* Reverse Proxy: Web server that centralizes internal services and acts a single node for internet <-> intranet. If more then one web server is behind proxy, deploy Loadbalancer instead.
+  * Increases security by obscuring infrastructure.
+  * Scalability: Clients only see proxy IP, infrastructure can scale seamlessly.
+  * SSL Termination
 * Load Balancer -> L4 vs L7
   * General Load Balancer: Prevent requests going to unhealthy servers, prevent overloading resources help eliminate single point of failure. Enable also SSL terminatinos and session persistence.
   * Disadvantage Load Balancer: Can become bottleneck or single point of failure.
@@ -99,6 +103,7 @@ Review Materials:
   * L7: Considers HTTP URI for routing
   * Horizontal Scaling: Scaling commodity machines is cheaper than vertical scaling on specialized enterprise systems.
     * Disadvantage Horizontal Scaling: Introduces complexity and involves cloning servers. Servers have to be stateless and sessions stored in centralized data store.
+
 * CDN & Edge
   * CDN: delivering eg. media. Can be push or pull.
   * Disadvantage CDN: Costs can be significant, Content could be stale, determined by time-to-live (TTL).
