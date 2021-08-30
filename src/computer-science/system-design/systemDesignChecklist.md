@@ -4,8 +4,8 @@
 
 * Use Cases
 * Scenarios that will not be covered
-* Who will use
-* How many will use
+* Who will use it?
+* How many will use it ?
 * Usage patterns
 
 ## 2 Estimations
@@ -28,6 +28,8 @@
 * Database System and Schema
 * Basic algorithm
 * High level design for read/write scenario
+* Class Diagram - how to use Object oriented principles
+* Security & Privacy
 
 ## 4 Design and scale core components
 
