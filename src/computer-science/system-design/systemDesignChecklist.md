@@ -1,6 +1,6 @@
 # System Design Checklist
 
-## Feature expectations 5min
+## 1 Feature scope and constraints
 
 * Use Cases
 * Scenarios that will not be covered
@@ -8,7 +8,7 @@
 * How many will use
 * Usage patterns
 
-## Estimations
+## 2 Estimations
 
 * Throughput (Queries per second for read/write)
 * Latency expected from the system (read/write queries)
@@ -19,21 +19,17 @@
   * If we are using cache, what kind of data?
   * How much RAM and machines for that to achieve?
 
-## Design goals
+## 3 High Level Design
 
-* Latency and Throughput requirements
 * Consistency vs Availability
   * weak, eventual, strong Consistency
   * failover / replication for Availability
-
-## High Level Design
-
 * APIs for Read/Write Scenarios for crucial components
-* Database schema
+* Database System and Schema
 * Basic algorithm
 * High level design for read/write scenario
 
-## Deep Dive
+## 4 Design and scale core components
 
 * Scaling the algorithm
 * Scaling individual components: Availability / Consistency
@@ -47,7 +43,7 @@
     * RDBMS: Master-slave, master-master, federation, sharding, denormalization, sql tuning
     * NoSQL: Key-value, Wide-Column, Graph, Document
       * RAM: Redis, Memcached
-      * AP (Availability, Parition): Cassandra
+      * AP (Availability, Partition): Cassandra
       * CP (Consistency, Partition): MongoDB, DynamoDB
   
   * Caches
@@ -58,7 +54,7 @@
   * Communication
     * TCP, UDP, REST, RPC
 
-## Justify
+## 5 Justify
 
 * Throughput of each layer
 * Latency caused between each layer

@@ -93,10 +93,15 @@ Review Materials:
 * Public Key Infrastructure & Certificate Authority
 * Symmetric vs asymetric encryption - Symetric is fast (AES), asymetric is great for exchanging (Pub/Sec)
 * Load Balancer -> L4 vs L7
+  * General Load Balancer: Prevent requests going to unhealthy servers, prevent overloading resources help eliminate single point of failure. Enable also SSL terminatinos and session persistence.
+  * Disadvantage Load Balancer: Can become bottleneck or single point of failure.
   * L4: Considers both client and destination IP addresses and port numbers for routing
   * L7: Considers HTTP URI for routing
+  * Horizontal Scaling: Scaling commodity machines is cheaper than vertical scaling on specialized enterprise systems.
+    * Disadvantage Horizontal Scaling: Introduces complexity and involves cloning servers. Servers have to be stateless and sessions stored in centralized data store.
 * CDN & Edge
   * CDN: delivering eg. media. Can be push or pull.
+  * Disadvantage CDN: Costs can be significant, Content could be stale, determined by time-to-live (TTL).
   * Edge: Internet of things use case, brings computation and storage closer to source of data
 * Bloom filter & count-min sketch: Space efficient probabilistic based data structures
   * Bloom filter: can have false positives but no false negatives.

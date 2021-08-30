@@ -1,4 +1,5 @@
-- Database architecture design
+- **Database architecture design**
+- **Back of the envelope calculations**
 - Deployment
 - Scaling/autoscaling
 - Monitoring
