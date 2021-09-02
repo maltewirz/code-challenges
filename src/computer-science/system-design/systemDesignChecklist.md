@@ -5,8 +5,11 @@
 * Use Cases
 * Scenarios that will not be covered
 * Who will use it?
-* How many will use it ?
+* How many will use it?
 * Usage patterns
+
+Non - functional Requirements:
+* availability
 
 ## 2 Estimations
 
@@ -18,18 +21,19 @@
   * Traffic estimates (Mbps read:  write:)
   * Storage estimates (GB read:  write:)
   * Memory estimates  (GB read:  write:)
-
-## 3 High Level Design
-
 * Consistency vs Availability
   * weak, eventual, strong Consistency
   * failover / replication for Availability
+
+## 3 High Level Design
+
 * APIs for Read/Write Scenarios for crucial components
 * Database System and Schema
 * Basic algorithm
 * High level design for read/write scenario
 * Class Diagram - how to use Object oriented principles
 * Security & Privacy
+* Pseudo code for specific calculations
 
 ## 4 Design and scale core components
 
