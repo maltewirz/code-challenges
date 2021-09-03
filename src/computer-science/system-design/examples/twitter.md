@@ -12,7 +12,7 @@
 * IO throughput:
     1 M write ops/s
     10 Mio read ops/s
-* Latency requirment:
+* Latency requirement:
     30ms for read requests
     100ms for write requests
 * Read Write Ratio: 10:1

@@ -1,6 +1,3 @@
-Review Materials:
-* https://github.com/donnemartin/system-design-primer
-
 # 0 System Design Primer
 
 ## Considerations for System Design
@@ -139,6 +136,58 @@ Review Materials:
     * Disadvantage Microservice: adds complexity when deploying and operating.
   * Service Discovery: Using tools like Consul, Etcd can find services by keeping track of names, addresses and ports. Can also store key:value for config values.
 
+* Deployment
+  * Definitions:
+    * Deployment: All changes that mutate the service
+    * Release: All changes that change business logic
+    * Blue/Green Deployment: Two instances of system, one serving traffic and another ready. Allows quick switching.
+    * Canary Deployment: New version of component is introduced for a small part of the workload to validate that it behaves correctly. Can be used in combination with green/blue deployments
+    * Rolling forward: Instead of reverting or undoing a deployment, a change is applied to the service to address a problem that occured after deployment.
+    * Synthetic traffic: Artificial traffic that is generated towards a service to exercise flows. Can be done to warm up or test a service.
+    * Demotion: Instant routing of all traffic to green system. Backwards compatibility is required.
+    * Deployment lifetime: A canary should be promoted or demoted as quickly as possible to reduce service unstable state.
+    * Validation: Service metrics like HTTP status code and business metrics like orders placed.
+    * Rollback: Different to demotion since only applied when deployment lifecycle are complete.
+    * Backwards and forwards compatibility: Needed for blue/green deployments.
+      * Forward compatibility: ignore unknown (newly added) properties during JSON deserialization.
+      * Backwards compatibility: JSON field renamed, now checking for both namings.
+    * Database schema ownership: To have backwards-compatible db schemas, each db owned and accessed by only one service.
+    * Breaking changes to data schemas, e.g. renaming a column in RDBMS. Major breaking should be rare, instead rather add new column. In case of failure, often easier to roll forward.
+  * Goal: Deploy with confidence via
+    * Canary Deployments
+    * Faster Rollbacks
+    * Increased Monitoring
+  * Deployment KPIs
+    * Service Lebel Objective (SLO): Service performance measurement. Measured by centralized metrics platform.
+    * Mean time to Resolution (MTTR): Time between failure and resolution.
+  * Best practises:
+    * Automated, with minimal human manual gates
+    * Green/blue deployment for fast traffic shifting
+    * Canary Deployment with traffic control
+    * Minimize changes in each deployment to ease failure analysis.
+    * All changes use this process
+    * Seperate deployment from release if possible. (A/B testing)
+  * Phases of deployment:
+    * Blue deployment: No traffic yet, just deployment test.
+    * -> Pre-validation: Validation of blue system with smoke test/synthetic traffic.
+    * -> Canary Traffic: Some live traffic from green system to blue.
+    * -> Canary Validation: Validation of traffic on blue system for 3-4 hours with monitoring
+    * -> Promotion: Continue deployment
+    * -> Gradual Rollout: Gradual shift from green to blue with monitoring
+    * -> Post-validation: Monitoring
+    * -> Termination: Transfer complete
+  * Benefits from automation
+    * Traceability: Audit trails
+    * Predictability: Reducing human error
+    * Maintainability: Build and deploy as version controlled script.
+
+    * Jenkins as tool:
+      * Start Jenkins pipeline by listening for Git commits
+      * Go/NoGo Step allows PM control over final release
+      * Tells App Center to compile and package (includes iOS)
+      * Tells Browserstack to run integration tests
+      * Tells App Center to distribute our Apple/Google
+
 ## Tools
 
 * Cassandra: NoSQL Database
@@ -169,66 +218,6 @@ Review Materials:
   * Kubernetes & Mesos Container Management Platform
 * Hadoop / Spark
   * Big data management systems
-
-* Deployment
-  * Definitions:
-    * Deployment: All changes that mutate the service
-    * Release: All changes that change business logic
-    * Blue/Green Deployment: Two instances of system, one serving traffic and another ready. Allows quick switching.
-    * Canary Deployment: New version of component is introduced for a small part of the workload to validate that it behaves correctly. Can be used in combination with green/blue deployments
-    * Rolling forward: Instead of reverting or undoing a deployment, a change is applied to the service to address a problem that occured after deployment.
-    * Synthetic traffic: Artificial traffic that is generated towards a service to exercise flows. Can be done to warm up or test a service.
-    * Demotion: Instant routing of all traffic to green system. Backwards compatibility is required.
-    * Deployment lifetime: A canary should be promoted or demoted as quickly as possible to reduce service unstable state.
-    * Validation: Service metrics like HTTP status code and business metrics like orders placed.
-    * Rollback: Different to demotion since only applied when deployment lifecycle are complete.
-    * Backwards and forwards compatibility: Needed for blue/green deployments.
-      * Forward compatibility: ignore unknown (newly added) properties during JSON deserialization.
-      * Backwards compatibility: JSON field renamed, now checking for both namings.
-    * Database schema ownership: To have backwards-compatible db schemas, each db owned and accessed by only one service.
-    * Breaking changes to data schemas, e.g. renaming a column in RDBMS. Major breaking should be rare, instead rather add new column. In case of failure, often easier to roll forward.
-  
-
-  * Goal: Deploy with confidence via
-    * Canary Deployments
-    * Faster Rollbacks
-    * Increased Monitoring
-  * Deployment KPIs
-    * Service Lebel Objective (SLO): Service performance measurement. Measured by centralized metrics platform.
-    * Mean time to Resolution (MTTR): Time between failure and resolution.
-  * Best practises:
-    * Automated, with minimal human manual gates
-    * Green/blue deployment for fast traffic shifting
-    * Canary Deployment with traffic control
-    * Minimize changes in each deployment to ease failure analysis.
-    * All changes use this process
-    * Seperate deployment from release if possible. (A/B testing)
-  * Phases of deployment:
-    * Blue deployment: No traffic yet, just deployment test.
-    * -> Pre-validation: Validation of blue system with smoke test/synthetic traffic.
-    * -> Canary Traffic: Some live traffic from green system to blue.
-    * -> Canary Validation: Validation of traffic on blue system for 3-4 hours with monitoring
-    * -> Promotion: Continue deployment
-    * -> Gradual Rollout: Gradual shift from green to blue with monitoring
-    * -> Post-validation: Monitoring
-    * -> Termination: Transfer complete
-
-  
-## Benefits from automation
-
-* Traceability: Audit trails
-* Predictability: Reducing human error
-* Maintainability: Build and deploy as version controlled script.
-
-* Jenkins as tool:
-  * Start Jenkins pipeline by listening for Git commits
-  * Go/NoGo Step allows PM control over final release
-  * Tells App Center to compile and package (includes iOS)
-  * Tells Browserstack to run integration tests
-  * Tells App Center to distribute our Apple/Google
-
-
-
 
 ## Monitoring
 
@@ -294,3 +283,6 @@ Review Materials:
   * Audit design with unit and integration tests
   * Code Review
   * Rollback solution for deployments
+
+Review Materials:
+* https://github.com/donnemartin/system-design-primer

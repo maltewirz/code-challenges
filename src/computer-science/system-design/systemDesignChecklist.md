@@ -8,9 +8,6 @@
 * How many will use it?
 * Usage patterns
 
-Non - functional Requirements:
-* availability
-
 ## 2 Estimations
 
 * IO
