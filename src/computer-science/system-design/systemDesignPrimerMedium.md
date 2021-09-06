@@ -69,14 +69,14 @@ Summary from
 # 4 Caching
 
 * Caching can be inserted on the client (browser storage), between client and server (cdn) or on the server itself. This reduced over-the-network calls to the database.
-* Works best for static or infrequently changing data 
+* Works best for static or infrequently changing data
 
 ## Handling stale data
 
 * Caching is easy for `read` operations and needs some additional considerations for `write`:
   * Sync cache and DB
-  * Syncing synchronously or asynchronously 
-  * Data refresh techniques like 
+  * Syncing synchronously or asynchronously
+  * Data refresh techniques like
     * `last in first out `(LIFO) and `first in last out` (FILO)
     * `least recently used` (LRU) - discards the LRU
     * ` least frequently used` (LFU) - discards the LFU
@@ -124,7 +124,7 @@ Summary from
 
 ## Non-relational Database
 
-* NoSQL db are more flexible. 
+* NoSQL db are more flexible.
 * Data is stored inside key value pairs, ideal for Caching, env variables, config files etc.
 * BASE describes features that a good noSQL database must support
   * Basically available - guarantee of availability

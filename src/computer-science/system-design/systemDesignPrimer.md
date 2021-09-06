@@ -135,7 +135,6 @@
   * Microservices: Suite of indecently deployable, small, modular services. (e.g. Photo Upload, Search feature etc.)
     * Disadvantage Microservice: adds complexity when deploying and operating.
   * Service Discovery: Using tools like Consul, Etcd can find services by keeping track of names, addresses and ports. Can also store key:value for config values.
-
 * Deployment
   * Definitions:
     * Deployment: All changes that mutate the service
@@ -180,13 +179,62 @@
     * Traceability: Audit trails
     * Predictability: Reducing human error
     * Maintainability: Build and deploy as version controlled script.
-
     * Jenkins as tool:
       * Start Jenkins pipeline by listening for Git commits
       * Go/NoGo Step allows PM control over final release
       * Tells App Center to compile and package (includes iOS)
       * Tells Browserstack to run integration tests
       * Tells App Center to distribute our Apple/Google
+* Monitoring
+  * Tools: Prometheus + Grafana
+  * Metrics to monitor:
+    * Inbound/Outbound request time and response code for every service
+    * Memory usage, CPU usage, uptime
+    * General health + dependencies
+    * Synthetic page load data
+* Monolith vs Microservice
+  * Microservices
+    * Pros
+      * Isolation of crashes
+      * Isolation for security: Vulnerability in image upload for avatar does not affect authentication system
+      * Independent Scaling
+      * Development Speed due to isolated code bases
+    * Cons
+      * Different types of complexity, e.g. debugging, integration test
+      * API Control is critical due to dependency
+      * Infrastructure tends to be bigger
+* Security
+  * Most important
+    * Encrypt in transit and at rest
+    * Sanitize all user inputs to prevent XSS or SQL injection
+    * Principle of least privilege
+  * Authentication
+    * Use JWT or OAuth (e.g. okta)
+    * Use standards and max retry
+    * Encrypt data
+  * JWT
+    * Use a random complicated key for JWT secret
+    * Use short TTL
+    * Don't store sensitive data in JWT
+  * Access
+    * Limit Requests to mitigate DOS
+    * HTTPS
+    * Use HSTS to avoid SSL strip
+    * private IPs: whitelisting IPs
+  * Input
+    * Validate and sanitize input
+    * Use authorization header for sensitive data
+  * Processing
+    * Don't auto-increment ids, instead UUID
+    * Use CDN for file uploads
+    * Turn debug mode off
+  * Output
+    * Never return sensitive data
+    * return proper status codes
+  * CI/CD
+    * Audit design with unit and integration tests
+    * Code Review
+    * Rollback solution for deployments
 
 ## Tools
 
@@ -218,71 +266,6 @@
   * Kubernetes & Mesos Container Management Platform
 * Hadoop / Spark
   * Big data management systems
-
-## Monitoring
-
-* Tools: Prometheus + Grafana
-* Metrics to monitor:
-  * Inbound/Outbound request time and response code for every service
-  * Memory usage, CPU usage, uptime
-  * General health + dependencies
-  * Synthetic page load data
-
-## Monolith vs Microservice
-
-* Microservices
-  * Pros
-    * Isolation of crashes
-    * Isolation for security: Vulnerability in image upload for avatar does not affect authentication system
-    * Independent Scaling
-    * Development Speed due to isolated code bases
-  * Cons
-    * Different types of complexity, e.g. debugging, integration test
-    * API Control is critical due to dependency
-    * Infrastructure tends to be bigger
-
-## Security
-
-### Most important
-
-* Encrypt in transit and at rest
-* Sanitize all user inputs to prevent XSS or SQL injection
-* Principle of least privilege
-
-### Authentication
-
-* Use JWT or OAuth (e.g. okta)
-* Use standards and max retry
-* Encrypt data
-
-* JWT
-  * Use a random complicated key for JWT secret
-  * Use short TTL
-  * Don't store sensitive data in JWT
-
-* Access
-  * Limit Requests to mitigate DOS
-  * HTTPS
-  * Use HSTS to avoid SSL strip
-  * private IPs: whitelisting IPs
-
-* Input
-  * Validate and sanitize input
-  * Use authorization header for sensitive data
-  
-* Processing
-  * Don't auto-increment ids, instead UUID
-  * Use CDN for file uploads
-  * Turn debug mode off
-
-* Output
-  * Never return sensitive data
-  * return proper status codes
-
-* CI/CD
-  * Audit design with unit and integration tests
-  * Code Review
-  * Rollback solution for deployments
 
 Review Materials:
 * https://github.com/donnemartin/system-design-primer
