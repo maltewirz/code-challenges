@@ -60,23 +60,27 @@ function maxDepthIterativeBreadthFirst(root: TreeNode | null): number {
     return depth;
 }
 
-
 function maxDepthIterative2(root: TreeNode | null): number {
     const queue: {
         node: TreeNode | null;
         depth: number;
     }[] = [{ node: root, depth: 1 }];
-    let current = fringe.pop()
+    let current = queue.pop();
     let max = 0;
 
     while (current && current.node) {
-        let node = current.nodes
+        const node = current.node;
 
         if (node.left) {
-            queue.push({node: node.left, depth: current.depth +1})
+            queue.push({ node: node.left, depth: current.depth + 1 });
         }
         if (node.right) {
-            queue.push({node: node.right, depth: current.depth +1})
+            queue.push({ node: node.right, depth: current.depth + 1 });
         }
+        
+        current.depth > max ? max = current.depth : null;
+
+        current = queue.pop()
     }
+    return max;
 }
