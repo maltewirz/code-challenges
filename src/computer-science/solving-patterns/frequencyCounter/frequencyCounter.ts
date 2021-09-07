@@ -67,11 +67,11 @@ export function anagram(strA: string, strB: string): boolean {
     const frequencyCounter2: freqObj = {};
 
     for (const val of strA) {
-        frequencyCounter1[val] = (frequencyCounter1[val] | 0) + 1;
+        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
     }
 
     for (const val of strB) {
-        frequencyCounter2[val] = (frequencyCounter2[val] | 0) + 1;
+        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
     }
 
     for (const val in frequencyCounter1) {
