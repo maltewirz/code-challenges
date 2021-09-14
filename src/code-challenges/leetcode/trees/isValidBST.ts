@@ -110,24 +110,24 @@ function isValidBSTDepthFirst(root: TreeNode | null): boolean | number {
 
 function isValidBSTDepthFirst2(root: TreeNode | null): boolean | number {
     if (root === null) {
-        return true
+        return true;
     }
 
-    const stack = [{node: root, min: -Infinity, max: Infinity}]
+    const stack = [{ node: root, min: -Infinity, max: Infinity }];
 
     while (stack.length > 0) {
-        const {node, min, max} = stack.pop() // using shift or pop is both accepted
+        const { node, min, max } = stack.pop(); // using shift or pop is both accepted
 
         if (node.val <= min || node.val >= max) {
-            return false
+            return false;
         }
 
         if (node.left) {
-            stack.push({node: node.left, min, max: node.val})
+            stack.push({ node: node.left, min, max: node.val });
         }
         if (node.right) {
-            stack.push({node: node.right, min: node.val, max})
+            stack.push({ node: node.right, min: node.val, max });
         }
     }
-    return true
+    return true;
 }

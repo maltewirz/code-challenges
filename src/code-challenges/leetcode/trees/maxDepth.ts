@@ -42,16 +42,16 @@ function maxDepthIterativeBreadthFirst(root: TreeNode | null): number {
 
     while (queue.length !== 0) {
         const len = queue.length;
-        // run for loop as long as queue has items
+        // loop until you have processed all original queue items
         for (let i = 0; i < len; i++) {
             // extract the first item of the queue
             const item = queue.shift();
             // if item has left child, add this to queue
-            if (item.left) {
+            if (item && item.left) {
                 queue.push(item.left);
             }
             // if item has right child, add this to queue
-            if (item.right) {
+            if (item && item.right) {
                 queue.push(item.right);
             }
         }
