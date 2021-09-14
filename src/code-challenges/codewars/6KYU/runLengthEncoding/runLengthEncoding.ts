@@ -24,7 +24,7 @@ runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
 
  */
 
-export function runLengthEncoding(chars: string[]): any[] {
+export function runLengthEncoding(chars: string[]): (string|number)[] {
     const arr = [];
     let counter = 1;
 
@@ -37,4 +37,18 @@ export function runLengthEncoding(chars: string[]): any[] {
         }
     }
     return arr;
+}
+
+// Bonus: Decoding
+
+export function runLengthDecoding(chars: string[]): string[] {
+    const result = []
+    for (let i = 0; i < chars.length; i += 2) {
+        const char = chars[i]
+        const length = Number(chars[i+1])
+        for (let j = 0; j < length; j++) {            
+            result.push(char)
+        }
+    }    
+    return result
 }
