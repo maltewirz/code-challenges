@@ -18,13 +18,13 @@ Output: ["mobile", "moneypot", "monitor"] ["mouse", "mousepad"] ["mouse", "mouse
 
 */
 
-function searchSuggestions(repository, customerQuery) {
+export function searchSuggestions(repository: string[], customerQuery: string): string[][] {
     let currentQuery = customerQuery[0].toLowerCase()
     const output = []
     for (let i = 1; i < customerQuery.length; i++) {
         // get currentQuery by adding the letters one by one
         currentQuery += customerQuery[i].toLowerCase()
-        const searchResult = []
+        const searchResult: string[] = []
         // search for matches in repo and add them to searchResult
         repository.forEach(item => {
             item = item.toLowerCase()
@@ -43,7 +43,7 @@ function searchSuggestions(repository, customerQuery) {
 
 /**
  * Explanations
- 1. My approach for this question is a simple loop for each input the user makes. 
+ 1. My approach for this question is a simple loop for each input the user makes.
 
  2. The run time complexity is O(n^2), since the loop will run n times and search the repo also n times. 
  */
