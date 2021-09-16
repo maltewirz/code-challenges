@@ -65,12 +65,12 @@ would contain all fruits of group 1.
 
  */
 
-function couponCodeCheck(codeList, shoppingCart) {
+export function couponCodeCheck(codeList: string[][], shoppingCart: string[]) {
     let codeIdx = 0
     let shopIdx = 0
     
     while (codeIdx < codeList.length && shopIdx < shoppingCart.length) {
-        const codeListItem = codeList[codeIdx].split(' ')
+        const codeListItem = codeList[codeIdx]
         let codeItemIdx = 0
         while (codeItemIdx < codeListItem.length && shopIdx < shoppingCart.length) {
             
