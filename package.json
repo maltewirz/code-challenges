@@ -7,7 +7,7 @@
     "test-ts": "jest --watch",
     "test-py": "nodemon --ext py --exec python3 src/code-challenges/$KYU/$FOLDER/test_$KATA.py"
   },
-  "author": "Malte Wirz <mail@maltewirz.com>",
+  "author": "Malte Wirz <32659282+maltewirz@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
     "@types/jest": "^27.0.2",
